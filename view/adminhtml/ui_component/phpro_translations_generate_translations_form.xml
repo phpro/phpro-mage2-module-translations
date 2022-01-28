@@ -1,0 +1,60 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">phpro_translations_generate_translations_form.data_source</item>
+        </item>
+        <item name="label" translate="true" xsi:type="string">General Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button class="Phpro\Translations\Block\Adminhtml\Translation\GenerateJson\SaveButton" name="save"/>
+        </buttons>
+        <namespace>phpro_translations_generate_translations_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>phpro_translations_generate_translations_form.data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="*/*/doGenerate"/>
+        </settings>
+        <dataProvider class="Phpro\Translations\Model\Translation\EmptyDataProvider" name="data_source">
+            <settings>
+                <requestFieldName>fake_placeholder</requestFieldName>
+                <primaryFieldName>fake_placeholder</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+
+    <fieldset name="general">
+        <settings>
+            <label/>
+        </settings>
+
+        <field name="storeviews" formElement="multiselect">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>int</dataType>
+                <label translate="true">Store View</label>
+            </settings>
+            <formElements>
+                <multiselect>
+                    <settings>
+                        <options class="Magento\Cms\Ui\Component\Listing\Column\Cms\Options"/>
+                    </settings>
+                </multiselect>
+            </formElements>
+        </field>
+    </fieldset>
+</form>

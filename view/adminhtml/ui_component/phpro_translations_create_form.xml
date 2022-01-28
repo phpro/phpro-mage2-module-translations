@@ -1,0 +1,114 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">phpro_translations_create_form.translation_form_data_source
+            </item>
+        </item>
+        <item name="label" translate="true" xsi:type="string">General Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button class="Phpro\Translations\Block\Adminhtml\Translation\Edit\BackButton" name="back"/>
+            <button class="Phpro\Translations\Block\Adminhtml\Translation\Edit\SaveButton" name="save"/>
+        </buttons>
+        <namespace>phpro_translations_create_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>phpro_translations_create_form.translation_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="translation_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="*/*/saveNew"/>
+        </settings>
+        <dataProvider class="Phpro\Translations\Model\Translation\DataProvider" name="translation_form_data_source">
+            <settings>
+                <requestFieldName>key_id</requestFieldName>
+                <primaryFieldName>key_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general">
+        <settings>
+            <label/>
+        </settings>
+        <field formElement="input" name="string" sortOrder="10">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Translation Key</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                    <item name="dataType" xsi:type="string">string</item>
+                    <item name="source" xsi:type="string">translation-key</item>
+                    <item name="dataScope" xsi:type="string">string</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field formElement="multiselect" name="locale_field">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Locale</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                    <item name="dataType" xsi:type="string">string</item>
+                    <item name="source" xsi:type="string">translation-locale</item>
+                    <item name="dataScope" xsi:type="string">locale_field</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+            <formElements>
+                <multiselect>
+                    <settings>
+                        <options class="Phpro\Translations\Model\Translation\Source\Locales"/>
+                    </settings>
+                </multiselect>
+            </formElements>
+        </field>
+        <field formElement="input" name="translate">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Translation String</item>
+                    <item name="sortOrder" xsi:type="number">30</item>
+                    <item name="dataType" xsi:type="string">string</item>
+                    <item name="source" xsi:type="string">translation-string</item>
+                    <item name="dataScope" xsi:type="string">translate</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field formElement="checkbox" name="frontend">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Used in frontend translations? (PWA only)</item>
+                    <item name="sortOrder" xsi:type="number">40</item>
+                    <item name="dataType" xsi:type="string">boolean</item>
+                    <item name="source" xsi:type="string">translation-frontend</item>
+                    <item name="dataScope" xsi:type="string">frontend</item>
+                </item>
+            </argument>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="string">0</map>
+                            <map name="true" xsi:type="string">1</map>
+                        </valueMap>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+    </fieldset>
+</form>

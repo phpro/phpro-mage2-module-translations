@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Phpro\Translations\Api\TranslationDataManagementInterface" type="Phpro\Translations\Model\TranslationDataManagement"/>
+	<preference for="Phpro\Translations\Api\ImportManagementInterface" type="Phpro\Translations\Model\ImportManagement"/>
+	<preference for="Phpro\Translations\Api\ExportManagementInterface" type="Phpro\Translations\Model\ExportManagement"/>
+	<preference for="Phpro\Translations\Api\TranslationRepositoryInterface" type="Phpro\Translations\Model\TranslationRepository"/>
+	<preference for="Phpro\Translations\Api\Data\TranslationInterface" type="Phpro\Translations\Model\Data\Translation"/>
+	<preference for="Phpro\Translations\Api\Data\TranslationSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Phpro\Translations\Model\ResourceModel\Translation\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">translation</argument>
+			<argument name="resourceModel" xsi:type="string">Phpro\Translations\Model\ResourceModel\Translation\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="phpro_translations_listing_data_source" xsi:type="string">Phpro\Translations\Model\ResourceModel\Translation\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+	<type name="Magento\Framework\Console\CommandListInterface">
+		<arguments>
+			<argument name="commands" xsi:type="array">
+				<item name="phpro.translations.import" xsi:type="object">Phpro\Translations\Console\Command\Import</item>
+				<item name="phpro.translations.import_full" xsi:type="object">Phpro\Translations\Console\Command\ImportFull</item>
+				<item name="phpro.translations.export" xsi:type="object">Phpro\Translations\Console\Command\Export</item>
+				<item name="phpro.translations.generate_frontend_translations" xsi:type="object">Phpro\Translations\Console\Command\GenerateFrontendTranslations</item>
+                <item name="phpro_translations_prepare_keys_command" xsi:type="object">Phpro\Translations\Console\Command\PrepareKeysCommand</item>
+            </argument>
+		</arguments>
+	</type>
+    <type name="Magento\ImportExport\Model\Import\SampleFileProvider">
+        <arguments>
+            <argument name="samples" xsi:type="array">
+                <item name="translations" xsi:type="string">Phpro_Translations</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

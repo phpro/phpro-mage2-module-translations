@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+	<route method="POST" url="/V1/phpro-translations/translation">
+		<service class="Phpro\Translations\Api\TranslationRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Phpro_Translations::Translation_save"/>
+		</resources>
+	</route>
+	<route method="GET" url="/V1/phpro-translations/translation/search">
+		<service class="Phpro\Translations\Api\TranslationRepositoryInterface" method="getList"/>
+		<resources>
+			<resource ref="Phpro_Translations::Translation_view"/>
+		</resources>
+	</route>
+	<route method="GET" url="/V1/phpro-translations/translation/:translationId">
+		<service class="Phpro\Translations\Api\TranslationRepositoryInterface" method="getById"/>
+		<resources>
+			<resource ref="Phpro_Translations::Translation_view"/>
+		</resources>
+	</route>
+	<route method="PUT" url="/V1/phpro-translations/translation/:translationId">
+		<service class="Phpro\Translations\Api\TranslationRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Phpro_Translations::Translation_update"/>
+		</resources>
+	</route>
+	<route method="DELETE" url="/V1/phpro-translations/translation/:translationId">
+		<service class="Phpro\Translations\Api\TranslationRepositoryInterface" method="deleteById"/>
+		<resources>
+			<resource ref="Phpro_Translations::Translation_delete"/>
+		</resources>
+	</route>
+</routes>

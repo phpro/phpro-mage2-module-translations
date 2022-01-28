@@ -1,0 +1,63 @@
+{
+    "name": "phpro/mage2-module-translations",
+    "description": "Manage translations via the Magento backend",
+    "type": "magento2-module",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "PHPro NV",
+            "email": "info@phpro.be",
+            "homepage": "https://www.phpro.be/"
+        }
+    ],
+    "require": {
+        "php": "^7.3",
+        "magento/framework": "^102.0|^103.0",
+        "magento/module-backend": "^101.0|^102.0",
+        "magento/module-ui": "^101.1"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "~2.14",
+        "magento/magento-coding-standard": "5",
+        "php-parallel-lint/php-parallel-lint": "^1.3",
+        "phpro/grumphp-shim": "~1.5.0",
+        "phpunit/phpunit": "^8.5",
+        "squizlabs/php_codesniffer": "~3.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Phpro\\Translations\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://repo.magento.com/"
+        }
+    ],
+    "config": {
+        "sort-packages": true,
+        "platform": {
+            "ext-gd": "7.3",
+            "ext-xsl": "7.3",
+            "ext-bcmath": "7.3",
+            "ext-pdo_mysql": "7.3",
+            "ext-soap": "7.3",
+            "ext-zip": "7.3"
+        },
+        "allow-plugins": {
+            "phpro/grumphp-shim": true
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "([ $COMPOSER_DEV_MODE -eq 0 ] || vendor/bin/phpcs --config-set installed_paths ../../magento/magento-coding-standard,../../phpcompatibility/php-compatibility/PHPCompatibility)"
+        ],
+        "post-update-cmd": [
+            "([ $COMPOSER_DEV_MODE -eq 0 ] || vendor/bin/phpcs --config-set installed_paths ../../magento/magento-coding-standard,../../phpcompatibility/php-compatibility/PHPCompatibility)"
+        ]
+    }
+}

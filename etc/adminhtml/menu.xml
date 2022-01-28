@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Phpro_Translations::translations"
+             module="Phpro_Translations"
+             resource="Magento_Backend::content"
+             sortOrder="40"
+             title="Translations"
+        />
+        <add action="phpro_translations/translation/index"
+             id="Phpro_Translations::phpro_translations_translation"
+             module="Phpro_Translations"
+             parent="Phpro_Translations::translations"
+             resource="Magento_Backend::content"
+             sortOrder="50" title="Translations"
+        />
+        <add action="phpro_translations/translation/generatejson"
+             id="Phpro_Translations::phpro_translations_generated_frontend_translation"
+             module="Phpro_Translations"
+             parent="Phpro_Translations::translations"
+             resource="Magento_Backend::content"
+             sortOrder="100"
+             title="Generate frontend translations"
+        />
+    </menu>
+</config>

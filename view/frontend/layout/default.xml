@@ -1,0 +1,13 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="head.additional">
+            <block name="require.js.phpro.translations"
+                   template="Phpro_Translations::page/js/require_js_maps.phtml">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Phpro\Translations\ViewModel\JsTranslationConfig</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

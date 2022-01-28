@@ -1,0 +1,140 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">phpro_translations_listing.phpro_translations_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>phpro_translations_columns</spinner>
+        <deps>
+            <dep>phpro_translations_listing.phpro_translations_listing_data_source</dep>
+        </deps>
+        <buttons>
+            <button name="add">
+                <url path="*/*/new"/>
+                <class>primary</class>
+                <label translate="true">Add new Translation</label>
+            </button>
+        </buttons>
+    </settings>
+    <dataSource component="Magento_Ui/js/grid/provider" name="phpro_translations_listing_data_source">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">key_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>Phpro_Translations::Translation</aclResource>
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="phpro_translations_listing_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>key_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <exportButton name="export_button"/>
+        <filters name="listing_filters"/>
+        <massaction name="listing_massaction">
+            <action name="edit">
+                <settings>
+                    <callback>
+                        <target>editSelected</target>
+                        <provider>phpro_translations_listing.phpro_translations_listing.phpro_translations_columns_editor</provider>
+                    </callback>
+                    <type>edit</type>
+                    <label translate="true">Edit</label>
+                </settings>
+            </action>
+        </massaction>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="phpro_translations_columns">
+        <settings>
+            <editorConfig>
+                <param name="selectProvider" xsi:type="string">phpro_translations_listing.phpro_translations_listing.phpro_translations_columns.ids</param>
+                <param name="enabled" xsi:type="boolean">true</param>
+                <param name="indexField" xsi:type="string">key_id</param>
+                <param name="clientConfig" xsi:type="array">
+                    <item name="saveUrl" path="phpro_translations/translation/inlineEdit" xsi:type="url"/>
+                    <item name="validateBeforeSave" xsi:type="boolean">false</item>
+                </param>
+            </editorConfig>
+            <childDefaults>
+                <param name="fieldAction" xsi:type="array">
+                    <item name="provider" xsi:type="string">phpro_translations_listing.phpro_translations_listing.phpro_translations_columns_editor</item>
+                    <item name="target" xsi:type="string">startEdit</item>
+                    <item name="params" xsi:type="array">
+                        <item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+                        <item name="1" xsi:type="boolean">true</item>
+                    </item>
+                </param>
+            </childDefaults>
+        </settings>
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>key_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>55</resizeDefaultWidth>
+            </settings>
+        </selectionsColumn>
+        <column name="key_id">
+            <settings>
+                <sorting>asc</sorting>
+                <label translate="true">ID</label>
+            </settings>
+        </column>
+        <column name="string">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Translation key</label>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <column name="translate">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Translation string</label>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <column name="locale" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <options class="Phpro\Translations\Model\Translation\Source\Locales"/>
+                <filter>select</filter>
+                <label translate="true">Locale</label>
+                <dataType>select</dataType>
+                <editor>
+                    <editorType>select</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <actionsColumn class="Phpro\Translations\Ui\Component\Listing\Column\TranslationActions" name="actions">
+            <settings>
+                <indexField>key_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>107</resizeDefaultWidth>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

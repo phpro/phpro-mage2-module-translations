@@ -1,0 +1,11 @@
+<?php
+/** @var \Magento\Framework\View\Element\Template $block */
+/** @var \Phpro\Translations\Model\Data\InlineGenerateStatsCollection $statsItems */
+$statsItems = $block->getData('statsItems')
+?>
+<?= __('Inline frontend translations successfully re-generated for:'); ?>
+<ul style="margin-left: 35px; margin-top: 10px;">
+<?php foreach ($statsItems as $stats): ?>
+    <li><?= $stats ?></li>
+<?php endforeach; ?>
+</ul>

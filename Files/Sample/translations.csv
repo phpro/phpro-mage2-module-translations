@@ -1,0 +1,5 @@
+key,translation,locale
+"First translation key","First value","en_US"
+"First translation key","Eerste waarde","nl_NL"
+"Second translation key","Second value","en_US"
+"Third translation key","Derde waarde","nl_NL"

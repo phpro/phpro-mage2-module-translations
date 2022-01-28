@@ -1,0 +1,19 @@
+<?php
+/**
+ * @var \Magento\Framework\View\Element\Template $block
+ * @var \Phpro\Translations\ViewModel\JsTranslationConfig $viewModel
+ */
+$viewModel = $block->getViewModel();
+$jsTranslationMapPath = $viewModel->getJsTranslationFilePath();
+?>
+<?php if ($jsTranslationMapPath): ?>
+    <script>
+        require.config({
+            'map': {
+                '*': {
+                    'js-translation.json': '<?= $jsTranslationMapPath ?>',
+                }
+            }
+        });
+    </script>
+<?php endif; ?>

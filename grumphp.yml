@@ -1,0 +1,24 @@
+grumphp:
+  tasks:
+    phpcsfixer:
+      config_contains_finder: true
+      config: .php_cs
+      triggered_by: [php]
+    phplint:
+      triggered_by: [php]
+    phpcs:
+      standard: [Magento2, PSR2]
+      ignore_patterns:
+        - "mage2-module-translations/vendor"
+        - "Test/Unit"
+      exclude:
+        - Magento2.Functions.StaticFunction
+        - Magento2.Exceptions.DirectThrow
+        - Magento2.Exceptions.ThrowCatch
+        - Magento2.Translation.ConstantUsage
+        - Magento2.NamingConvention.ReservedWords
+      triggered_by: [php]
+    phpunit:
+      always_execute: true
+    file_size:
+      max_size: 5M
