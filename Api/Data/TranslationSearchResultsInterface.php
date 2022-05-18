@@ -8,12 +8,14 @@ interface TranslationSearchResultsInterface extends \Magento\Framework\Api\Searc
 
     /**
      * Get Translation list.
+     *
      * @return \Phpro\Translations\Api\Data\TranslationInterface[]
      */
     public function getItems();
 
     /**
      * Set translate list.
+     * 
      * @param \Phpro\Translations\Api\Data\TranslationInterface[] $items
      * @return $this
      */
