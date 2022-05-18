@@ -27,7 +27,7 @@ jobs:
             extensions: bcmath, gd
 
       -   name: Install Composer dependencies
-          run: composer config "http-basic.repo.magento.com" ${{ secrets.MAGE_USER }} ${{ secrets.MAGE_PASS }} && composer install
+          run: composer config "http-basic.repo.magento.com" ${{ secrets.MAGE_USER }} ${{ secrets.MAGE_PASS }} && composer install --prefer-dist
 
       -   name: GrumPHP
           run: ./vendor/bin/grumphp run
