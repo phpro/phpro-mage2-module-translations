@@ -15,16 +15,16 @@ use Phpro\Translations\Model\Validator\LocaleValidator;
 
 class Translations extends AbstractEntity
 {
-    const ENTITY_CODE = 'translations';
-    const TABLE = 'translation';
+    private const ENTITY_CODE = 'translations';
+    private const TABLE = 'translation';
 
-    const COL_KEY = 'string';
-    const COL_TRANSLATION = 'translate';
-    const COL_LOCALE = 'locale';
+    public const COL_KEY = 'string';
+    public const COL_TRANSLATION = 'translate';
+    public const COL_LOCALE = 'locale';
 
-    const HEADER_KEY = 'key';
-    const HEADER_TRANSLATION = 'translation';
-    const HEADER_LOCALE = 'locale';
+    public const HEADER_KEY = 'key';
+    public const HEADER_TRANSLATION = 'translation';
+    public const HEADER_LOCALE = 'locale';
 
     /**
      * @var string[]
@@ -37,11 +37,15 @@ class Translations extends AbstractEntity
 
     /**
      * If we should check column names
+     *
+     * @var bool
      */
     protected $needColumnCheck = true;
 
     /**
      * Need to log in import history
+     *
+     * @var bool
      */
     protected $logInHistory = true;
 
@@ -55,6 +59,17 @@ class Translations extends AbstractEntity
      */
     private $localeValidator;
 
+    /**
+     * Translations constructor.
+     *
+     * @param JsonHelper $jsonHelper
+     * @param ImportHelper $importExportData
+     * @param Data $importData
+     * @param ResourceConnection $resource
+     * @param Helper $resourceHelper
+     * @param ProcessingErrorAggregatorInterface $errorAggregator
+     * @param LocaleValidator $localeValidator
+     */
     public function __construct(
         JsonHelper $jsonHelper,
         ImportHelper $importExportData,
@@ -144,6 +159,7 @@ class Translations extends AbstractEntity
 
     /**
      * Import data
+     *
      * @throws \Exception
      * @return bool
      */
@@ -164,6 +180,7 @@ class Translations extends AbstractEntity
 
     /**
      * Save and replace entities
+     *
      * @return void
      */
     private function saveAndReplaceEntity(): void
@@ -197,6 +214,7 @@ class Translations extends AbstractEntity
 
     /**
      * Save entities
+     *
      * @param array $entityList
      * @return int
      */

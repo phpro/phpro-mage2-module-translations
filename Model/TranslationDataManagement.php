@@ -40,6 +40,16 @@ class TranslationDataManagement implements TranslationDataManagementInterface
      */
     private $throwException;
 
+    /**
+     * TranslationDataManagement constructor.
+     *
+     * @param LoggerInterface $logger
+     * @param LocaleValidator $localeValidator
+     * @param LocaleSource $localeSource
+     * @param TranslationFactory $translationFactory
+     * @param TranslationRepository $repository
+     * @param bool $throwException
+     */
     public function __construct(
         LoggerInterface $logger,
         LocaleValidator $localeValidator,
@@ -105,6 +115,12 @@ class TranslationDataManagement implements TranslationDataManagementInterface
         }
     }
 
+    /**
+     * @param string $translationKey
+     * @param string $translationValue
+     * @param string $locale
+     * @throws \Exception
+     */
     private function insertTranslation(string $translationKey, string $translationValue, string $locale)
     {
         try {
@@ -133,6 +149,9 @@ class TranslationDataManagement implements TranslationDataManagementInterface
         }
     }
 
+    /**
+     * @return array
+     */
     private function getEnabledLocales(): array
     {
         if (!empty($this->enabledLocales)) {

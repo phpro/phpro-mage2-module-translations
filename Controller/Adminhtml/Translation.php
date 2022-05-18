@@ -8,7 +8,7 @@ use Magento\Backend\App\Action\Context;
 
 abstract class Translation extends Action
 {
-    const ADMIN_RESOURCE = 'Phpro_Translations::translations';
+    private const ADMIN_RESOURCE = 'Phpro_Translations::translations';
 
     /**
      * Init page

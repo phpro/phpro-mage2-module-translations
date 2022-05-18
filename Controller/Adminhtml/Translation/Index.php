@@ -9,13 +9,19 @@ use Magento\Framework\View\Result\PageFactory;
 
 class Index extends Action
 {
-    const ADMIN_RESOURCE = 'Phpro_Translations::Translation';
+    private const ADMIN_RESOURCE = 'Phpro_Translations::Translation';
 
     /**
      * @var PageFactory
      */
     private $resultPageFactory;
 
+    /**
+     * Index constructor.
+     *
+     * @param Context $context
+     * @param PageFactory $resultPageFactory
+     */
     public function __construct(
         Context $context,
         PageFactory $resultPageFactory
@@ -25,7 +31,7 @@ class Index extends Action
     }
 
     /**
-     * @inheridoc
+     * @inheritDoc
      */
     public function execute()
     {

@@ -9,7 +9,7 @@ use Phpro\Translations\Controller\Adminhtml\Translation;
 
 class Delete extends Translation
 {
-    const ADMIN_RESOURCE = 'Phpro_Translations::Translation_delete';
+    private const ADMIN_RESOURCE = 'Phpro_Translations::Translation_delete';
 
     /**
      * @var TranslationRepositoryInterface
@@ -25,7 +25,7 @@ class Delete extends Translation
     }
 
     /**
-     * @inheridoc
+     * @inheritDoc
      */
     public function execute()
     {

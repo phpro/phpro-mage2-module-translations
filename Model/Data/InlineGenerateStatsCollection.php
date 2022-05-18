@@ -14,11 +14,19 @@ class InlineGenerateStatsCollection implements IteratorAggregate, Countable
      */
     private $statsItems;
 
+    /**
+     * InlineGenerateStatsCollection constructor.
+     *
+     * @param InlineGenerateStats ...$statsItems
+     */
     public function __construct(InlineGenerateStats ...$statsItems)
     {
         $this->statsItems = $statsItems;
     }
 
+    /**
+     * @param InlineGenerateStats $stats
+     */
     public function add(InlineGenerateStats $stats)
     {
         $this->statsItems[] = $stats;
@@ -32,11 +40,17 @@ class InlineGenerateStatsCollection implements IteratorAggregate, Countable
         return new ArrayIterator($this->statsItems);
     }
 
+    /**
+     * @return int
+     */
     public function count(): int
     {
         return \count($this->statsItems);
     }
 
+    /**
+     * @return array
+     */
     public function toArray(): array
     {
         $result = [];

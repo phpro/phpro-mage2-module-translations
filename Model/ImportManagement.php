@@ -35,6 +35,15 @@ class ImportManagement implements ImportManagementInterface
      */
     private $importStatsFactory;
 
+    /**
+     * ImportManagement constructor.
+     *
+     * @param Csv $csv
+     * @param LocaleValidator $localeValidator
+     * @param TranslationFactory $translationFactory
+     * @param TranslationRepository $repository
+     * @param ImportStatsFactory $importStatsFactory
+     */
     public function __construct(
         Csv $csv,
         LocaleValidator $localeValidator,
@@ -49,6 +58,12 @@ class ImportManagement implements ImportManagementInterface
         $this->importStatsFactory = $importStatsFactory;
     }
 
+    /**
+     * @param string $filePath
+     * @param string $locale
+     * @return ImportStats
+     * @throws \Exception
+     */
     public function importMagentoCsv(string $filePath, string $locale): ImportStats
     {
         $this->localeValidator->validate($locale);
@@ -57,7 +72,9 @@ class ImportManagement implements ImportManagementInterface
         $this->csv->setEnclosure('"');
         $csvData = $this->csv->getData($filePath);
 
-        /** @var ImportStats $importStats */
+        /**
+         * @var ImportStats $importStats
+         */
         $importStats = $this->importStatsFactory->create();
 
         foreach ($csvData as $row => $data) {
@@ -79,13 +96,19 @@ class ImportManagement implements ImportManagementInterface
         return $importStats;
     }
 
+    /**
+     * @param string $filePath
+     * @return ImportStats
+     */
     public function importFull(string $filePath): ImportStats
     {
         $this->csv->setDelimiter(',');
         $this->csv->setEnclosure('"');
         $csvData = $this->csv->getData($filePath);
 
-        /** @var ImportStats $importStats */
+        /**
+         * @var ImportStats $importStats
+         */
         $importStats = $this->importStatsFactory->create();
 
         foreach ($csvData as $row => $data) {
@@ -108,9 +131,16 @@ class ImportManagement implements ImportManagementInterface
         return $importStats;
     }
 
+    /**
+     * @param string $translationKey
+     * @param string $translationValue
+     * @param string $locale
+     */
     private function createTranslations(string $translationKey, string $translationValue, string $locale)
     {
-        /** @var Translation $translationModel */
+        /**
+         * @var Translation $translationModel
+         */
         $translationModel = $this->translationFactory->create();
 
         $translationModel->setLocale($locale);
@@ -120,6 +150,11 @@ class ImportManagement implements ImportManagementInterface
         $this->repository->save($translationModel);
     }
 
+    /**
+     * @param \Exception $e
+     * @param ImportStats $importStats
+     * @param int $rowNumber
+     */
     private function handleException(\Exception $e, ImportStats $importStats, int $rowNumber)
     {
         if ($e instanceof CouldNotSaveException && (false !== strpos(strtolower($e->getMessage()), 'unique'))) {

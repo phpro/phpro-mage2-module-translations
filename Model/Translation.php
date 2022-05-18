@@ -23,6 +23,17 @@ class Translation extends AbstractModel
      */
     private $dataObjectHelper;
 
+    /**
+     * Translation constructor.
+     *
+     * @param Context $context
+     * @param Registry $registry
+     * @param TranslationInterfaceFactory $translationDataFactory
+     * @param DataObjectHelper $dataObjectHelper
+     * @param ResourceModel\Translation $resource
+     * @param ResourceModel\Translation\Collection $resourceCollection
+     * @param array $data
+     */
     public function __construct(
         Context $context,
         Registry $registry,

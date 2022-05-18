@@ -15,7 +15,7 @@ interface TranslationSearchResultsInterface extends \Magento\Framework\Api\Searc
 
     /**
      * Set translate list.
-     * 
+     *
      * @param \Phpro\Translations\Api\Data\TranslationInterface[] $items
      * @return $this
      */

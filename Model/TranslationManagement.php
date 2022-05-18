@@ -21,6 +21,13 @@ class TranslationManagement
      */
     private $repository;
 
+    /**
+     * TranslationManagement constructor.
+     *
+     * @param LocaleValidator $localeValidator
+     * @param TranslationFactory $translationFactory
+     * @param TranslationRepository $repository
+     */
     public function __construct(
         LocaleValidator $localeValidator,
         TranslationFactory $translationFactory,
@@ -31,6 +38,13 @@ class TranslationManagement
         $this->repository = $repository;
     }
 
+    /**
+     * @param string $translationKey
+     * @param string $translationValue
+     * @param string $locale
+     * @param string $frontend
+     * @throws \Exception
+     */
     public function addTranslation(
         string $translationKey,
         string $translationValue,

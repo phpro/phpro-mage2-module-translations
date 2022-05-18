@@ -18,6 +18,11 @@ class JsTranslationConfig implements ArgumentInterface
      */
     private $design;
 
+    /**
+     * JsTranslationConfig constructor.
+     * @param FileManager $fileManager
+     * @param DesignInterface $design
+     */
     public function __construct(
         FileManager $fileManager,
         DesignInterface $design
@@ -26,6 +31,9 @@ class JsTranslationConfig implements ArgumentInterface
         $this->design = $design;
     }
 
+    /**
+     * @return string
+     */
     public function getJsTranslationFilePath(): string
     {
         try {

@@ -45,6 +45,17 @@ class InlineTranslationsGenerator
      */
     private $systemStore;
 
+    /**
+     * InlineTranslationsGenerator constructor.
+     *
+     * @param DataProviderInterface $dataProvider
+     * @param State $state
+     * @param TranslateInterface $translate
+     * @param FileManager $fileManager
+     * @param Emulation $emulation
+     * @param DesignInterface $viewDesign
+     * @param SystemStore $systemStore
+     */
     public function __construct(
         DataProviderInterface $dataProvider,
         State $state,
@@ -63,6 +74,9 @@ class InlineTranslationsGenerator
         $this->systemStore = $systemStore;
     }
 
+    /**
+     * @return InlineGenerateStatsCollection
+     */
     public function forAll(): InlineGenerateStatsCollection
     {
         $storeIds = [];
@@ -73,6 +87,10 @@ class InlineTranslationsGenerator
         return $this->forStores($storeIds);
     }
 
+    /**
+     * @param array $storeIds
+     * @return InlineGenerateStatsCollection
+     */
     public function forStores(array $storeIds): InlineGenerateStatsCollection
     {
         $statsCollection = new InlineGenerateStatsCollection();
@@ -85,6 +103,10 @@ class InlineTranslationsGenerator
         return $statsCollection;
     }
 
+    /**
+     * @param int $storeId
+     * @return InlineGenerateStats
+     */
     private function generate(int $storeId): InlineGenerateStats
     {
         $translations = [];

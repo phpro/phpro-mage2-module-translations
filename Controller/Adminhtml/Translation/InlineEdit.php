@@ -19,6 +19,13 @@ class InlineEdit extends Action
      */
     private $translationFactory;
 
+    /**
+     * InlineEdit constructor.
+     *
+     * @param Context $context
+     * @param JsonFactory $jsonFactory
+     * @param TranslationFactory $translationFactory
+     */
     public function __construct(
         Context $context,
         JsonFactory $jsonFactory,
@@ -30,7 +37,7 @@ class InlineEdit extends Action
     }
 
     /**
-     * @inheridoc
+     * @inheritDoc
      */
     public function execute()
     {

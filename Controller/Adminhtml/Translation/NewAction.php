@@ -9,13 +9,19 @@ use Phpro\Translations\Controller\Adminhtml\Translation;
 
 class NewAction extends Translation
 {
-    const ADMIN_RESOURCE = 'Phpro_Translations::Translation_new_action';
+    private const ADMIN_RESOURCE = 'Phpro_Translations::Translation_new_action';
 
     /**
      * @var PageFactory
      */
     private $resultPageFactory;
 
+    /**
+     * NewAction constructor.
+     *
+     * @param Context $context
+     * @param PageFactory $resultPageFactory
+     */
     public function __construct(
         Context $context,
         PageFactory $resultPageFactory
@@ -25,7 +31,7 @@ class NewAction extends Translation
     }
 
     /**
-     * @inheridoc
+     * @inheritDoc
      */
     public function execute()
     {

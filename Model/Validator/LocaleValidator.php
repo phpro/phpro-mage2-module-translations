@@ -17,6 +17,11 @@ class LocaleValidator
      */
     private $locales = [];
 
+    /**
+     * LocaleValidator constructor.
+     *
+     * @param ListsInterface $localeLists
+     */
     public function __construct(ListsInterface $localeLists)
     {
         $this->localeLists = $localeLists;
@@ -33,6 +38,9 @@ class LocaleValidator
         }
     }
 
+    /**
+     * @return array
+     */
     private function getSupportedLocales(): array
     {
         if (!empty($this->locales)) {

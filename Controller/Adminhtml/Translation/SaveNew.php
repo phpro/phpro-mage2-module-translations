@@ -12,7 +12,7 @@ use Phpro\Translations\Model\TranslationManagement;
 
 class SaveNew extends Action
 {
-    const ADMIN_RESOURCE = 'Phpro_Translations::Translation_save';
+    private const ADMIN_RESOURCE = 'Phpro_Translations::Translation_save';
 
     /**
      * @var DataPersistorInterface
@@ -24,6 +24,13 @@ class SaveNew extends Action
      */
     private $translationManagement;
 
+    /**
+     * SaveNew constructor.
+     *
+     * @param Context $context
+     * @param DataPersistorInterface $dataPersistor
+     * @param TranslationManagement $translationManagement
+     */
     public function __construct(
         Context $context,
         DataPersistorInterface $dataPersistor,
@@ -35,7 +42,7 @@ class SaveNew extends Action
     }
 
     /**
-     * @inheridoc
+     * @inheritDoc
      */
     public function execute()
     {

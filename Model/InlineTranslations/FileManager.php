@@ -46,6 +46,16 @@ class FileManager
      */
     private $date;
 
+    /**
+     * FileManager constructor.
+     *
+     * @param Json $serializer
+     * @param DirectoryList $directoryList
+     * @param Filesystem $filesystem
+     * @param File $driverFile
+     * @param UrlInterface $urlGenerator
+     * @param TimezoneInterface $dateTime
+     */
     public function __construct(
         Json $serializer,
         DirectoryList $directoryList,
@@ -63,8 +73,7 @@ class FileManager
     }
 
     /**
-     * This method will return a public URL containing the replacement url for the original js-translation.json
-     * located in pub/static/frontend/<ThemeName>/<name>/<locale>/... folders.
+     * This method will return a public URL containing the replacement url for the original js-translation.json located in pub/static/frontend/<ThemeName>/<name>/<locale>/... folders.
      *
      * E.g. https://www.webshop.com/media/phpro_translations/ThemeName/default/nl_BE/1642691554translation.json
      *
@@ -94,8 +103,8 @@ class FileManager
 
     /**
      * This method saves the translations as json string in the media directory for related theme and locale.
-     * Also old generated translation files will be cleaned up and a new version string is created.
      *
+     * Also old generated translation files will be cleaned up and a new version string is created.
      * Example save path: pub/media/phpro_translations/ThemeName/default/nl_BE/1642691554translation.json
      *
      * @param array $translations
@@ -169,6 +178,10 @@ class FileManager
         }
     }
 
+    /**
+     * @param string $themeLocalePath
+     * @return string
+     */
     private function getRelativeVersionFilePath(string $themeLocalePath): string
     {
         return sprintf(

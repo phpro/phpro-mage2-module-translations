@@ -7,6 +7,12 @@ use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
 class Translation extends AbstractDb
 {
+    /**
+     * @param string $translationKey
+     * @param array $locales
+     * @return $this
+     * @throws \Exception
+     */
     public function deleteByTranslationKeyAndLocales(string $translationKey, array $locales)
     {
         $conn = $this->getConnection();

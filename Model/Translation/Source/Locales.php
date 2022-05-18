@@ -8,17 +8,25 @@ use Magento\Framework\Data\OptionSourceInterface;
 
 class Locales implements OptionSourceInterface
 {
-    const XML_PATH_LOCALE = 'general/locale/code';
+    private const XML_PATH_LOCALE = 'general/locale/code';
 
+    /**
+     * @var ResourceConnection
+     */
     private $resourceConnection;
 
+    /**
+     * Locales constructor.
+     *
+     * @param ResourceConnection $resourceConnection
+     */
     public function __construct(ResourceConnection $resourceConnection)
     {
         $this->resourceConnection = $resourceConnection;
     }
 
     /**
-     * @inheritdoc
+     * @inheritDoc
      */
     public function toOptionArray()
     {

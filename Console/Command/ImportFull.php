@@ -13,19 +13,26 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class ImportFull extends Command
 {
-    const COMMAND_NAME = 'phpro:translations:import-full';
-    const ARGUMENT_CSV_FILE = 'csvfile';
-    const OPTION_CLEAR_CACHE = 'clear-cache';
+    private const COMMAND_NAME = 'phpro:translations:import-full';
+    private const ARGUMENT_CSV_FILE = 'csvfile';
+    private const OPTION_CLEAR_CACHE = 'clear-cache';
 
     /**
      * @var ImportManagementInterface
      */
     private $importer;
+
     /**
      * @var Manager
      */
     private $cacheManager;
 
+    /**
+     * ImportFull constructor.
+     *
+     * @param ImportManagementInterface $importer
+     * @param Manager $cacheManager
+     */
     public function __construct(
         ImportManagementInterface $importer,
         Manager $cacheManager
@@ -35,6 +42,9 @@ class ImportFull extends Command
         parent::__construct();
     }
 
+    /**
+     * Configure import full command
+     */
     protected function configure(): void
     {
         $this->setName(self::COMMAND_NAME);
@@ -45,6 +55,10 @@ class ImportFull extends Command
         parent::configure();
     }
 
+    /**
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     */
     protected function execute(InputInterface $input, OutputInterface $output): void
     {
         try {
