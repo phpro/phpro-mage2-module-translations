@@ -35,6 +35,7 @@ class UpdateMetadataFields
         return $result;
     }
 
+
     /**
      * @param Subject $subject
      * @param $result
