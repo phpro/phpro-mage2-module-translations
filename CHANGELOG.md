@@ -10,4 +10,10 @@
 
 ## [1.1.0] - 2022-05-18
 ### Added
+- PHP 8.0 compatibility
+
+## [1.2.0] - 2022-05-19
+### Added
 - PHP 8.1 compatibility
+### Removed
+- PHP 8.0 compatibility
