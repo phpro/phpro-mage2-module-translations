@@ -13,8 +13,8 @@
     "require": {
         "php": "^7.4|^8.1",
         "magento/framework": "^102.0|^103.0",
-        "magento/module-backend": "^101.2|^102.0",
-        "magento/module-ui": "^101.2"
+        "magento/module-backend": "^102.0|^103.0",
+        "magento/module-ui": "^102.0|^103.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "3.5.0",
