@@ -45,17 +45,6 @@ class InlineTranslationsGenerator
      */
     private $systemStore;
 
-    /**
-     * InlineTranslationsGenerator constructor.
-     *
-     * @param DataProviderInterface $dataProvider
-     * @param State $state
-     * @param TranslateInterface $translate
-     * @param FileManager $fileManager
-     * @param Emulation $emulation
-     * @param DesignInterface $viewDesign
-     * @param SystemStore $systemStore
-     */
     public function __construct(
         DataProviderInterface $dataProvider,
         State $state,

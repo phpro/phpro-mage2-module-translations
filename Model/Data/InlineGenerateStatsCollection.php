@@ -14,11 +14,6 @@ class InlineGenerateStatsCollection implements IteratorAggregate, Countable
      */
     private $statsItems;
 
-    /**
-     * InlineGenerateStatsCollection constructor.
-     *
-     * @param InlineGenerateStats ...$statsItems
-     */
     public function __construct(InlineGenerateStats ...$statsItems)
     {
         $this->statsItems = $statsItems;

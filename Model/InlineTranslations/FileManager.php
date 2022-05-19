@@ -46,16 +46,6 @@ class FileManager
      */
     private $date;
 
-    /**
-     * FileManager constructor.
-     *
-     * @param Json $serializer
-     * @param DirectoryList $directoryList
-     * @param Filesystem $filesystem
-     * @param File $driverFile
-     * @param UrlInterface $urlGenerator
-     * @param TimezoneInterface $dateTime
-     */
     public function __construct(
         Json $serializer,
         DirectoryList $directoryList,

@@ -35,15 +35,6 @@ class ImportManagement implements ImportManagementInterface
      */
     private $importStatsFactory;
 
-    /**
-     * ImportManagement constructor.
-     *
-     * @param Csv $csv
-     * @param LocaleValidator $localeValidator
-     * @param TranslationFactory $translationFactory
-     * @param TranslationRepository $repository
-     * @param ImportStatsFactory $importStatsFactory
-     */
     public function __construct(
         Csv $csv,
         LocaleValidator $localeValidator,
@@ -61,8 +52,8 @@ class ImportManagement implements ImportManagementInterface
     /**
      * @param string $filePath
      * @param string $locale
-     * @return ImportStats
      * @throws \Exception
+     * @return ImportStats
      */
     public function importMagentoCsv(string $filePath, string $locale): ImportStats
     {

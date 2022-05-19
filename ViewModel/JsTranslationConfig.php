@@ -17,12 +17,7 @@ class JsTranslationConfig implements ArgumentInterface
      * @var DesignInterface
      */
     private $design;
-
-    /**
-     * JsTranslationConfig constructor.
-     * @param FileManager $fileManager
-     * @param DesignInterface $design
-     */
+    
     public function __construct(
         FileManager $fileManager,
         DesignInterface $design

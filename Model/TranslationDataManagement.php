@@ -40,16 +40,6 @@ class TranslationDataManagement implements TranslationDataManagementInterface
      */
     private $throwException;
 
-    /**
-     * TranslationDataManagement constructor.
-     *
-     * @param LoggerInterface $logger
-     * @param LocaleValidator $localeValidator
-     * @param LocaleSource $localeSource
-     * @param TranslationFactory $translationFactory
-     * @param TranslationRepository $repository
-     * @param bool $throwException
-     */
     public function __construct(
         LoggerInterface $logger,
         LocaleValidator $localeValidator,

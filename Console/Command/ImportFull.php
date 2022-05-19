@@ -27,12 +27,6 @@ class ImportFull extends Command
      */
     private $cacheManager;
 
-    /**
-     * ImportFull constructor.
-     *
-     * @param ImportManagementInterface $importer
-     * @param Manager $cacheManager
-     */
     public function __construct(
         ImportManagementInterface $importer,
         Manager $cacheManager

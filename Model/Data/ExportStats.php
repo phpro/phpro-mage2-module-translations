@@ -15,12 +15,6 @@ class ExportStats
      */
     private $totalRows;
 
-    /**
-     * ExportStats constructor.
-     *
-     * @param string $fileName
-     * @param int $totalRows
-     */
     public function __construct(string $fileName, int $totalRows)
     {
         $this->fileName = $fileName;

@@ -18,13 +18,6 @@ class InlineGenerateStats
      */
     public $amountGenerated;
 
-    /**
-     * InlineGenerateStats constructor.
-     *
-     * @param string $storeInformation
-     * @param int $storeId
-     * @param int $amountGenerated
-     */
     public function __construct(string $storeInformation, int $storeId, int $amountGenerated)
     {
         $this->storeInformation = $storeInformation;

@@ -12,7 +12,7 @@ use Phpro\Translations\Controller\Adminhtml\Translation;
 
 class Edit extends Translation
 {
-    private const ADMIN_RESOURCE = 'Phpro_Translations::Translation_update';
+    public const ADMIN_RESOURCE = 'Phpro_Translations::Translation_update';
 
     /**
      * @var PageFactory
@@ -29,14 +29,6 @@ class Edit extends Translation
      */
     private $coreRegistry;
 
-    /**
-     * Edit constructor.
-     *
-     * @param Context $context
-     * @param Registry $coreRegistry
-     * @param PageFactory $resultPageFactory
-     * @param TranslationRepositoryInterface $translationRepository
-     */
     public function __construct(
         Context $context,
         Registry $coreRegistry,

@@ -21,13 +21,6 @@ class TranslationManagement
      */
     private $repository;
 
-    /**
-     * TranslationManagement constructor.
-     *
-     * @param LocaleValidator $localeValidator
-     * @param TranslationFactory $translationFactory
-     * @param TranslationRepository $repository
-     */
     public function __construct(
         LocaleValidator $localeValidator,
         TranslationFactory $translationFactory,

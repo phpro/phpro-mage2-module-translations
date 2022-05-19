@@ -23,13 +23,6 @@ class DoGenerate extends Action
      */
     private $cacheTypeList;
 
-    /**
-     * DoGenerate constructor.
-     *
-     * @param Context $context
-     * @param InlineTranslationsGenerator $inlineTranslationsGenerator
-     * @param TypeListInterface $cacheTypeList
-     */
     public function __construct(
         Context $context,
         InlineTranslationsGenerator $inlineTranslationsGenerator,

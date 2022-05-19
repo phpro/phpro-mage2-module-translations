@@ -33,14 +33,6 @@ class PrepareKeysCommand extends Command
      */
     private $translationDataManagement;
 
-    /**
-     * PrepareKeysCommand constructor.
-     *
-     * @param ResolverFactory $optionResolverFactory
-     * @param Parser $parser
-     * @param TranslationDataManagementInterface $translationDataManagement
-     * @param string|null $name
-     */
     public function __construct(
         ResolverFactory $optionResolverFactory,
         Parser $parser,

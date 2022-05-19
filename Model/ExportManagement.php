@@ -31,15 +31,6 @@ class ExportManagement implements ExportManagementInterface
      */
     private $directoryList;
 
-    /**
-     * ExportManagement constructor.
-     *
-     * @param Csv $csv
-     * @param SearchCriteriaBuilder $searchCriteriaBuilder
-     * @param TranslationRepository $repository
-     * @param DirectoryList $directoryList
-     * @param TimezoneInterface $time
-     */
     public function __construct(
         Csv $csv,
         SearchCriteriaBuilder $searchCriteriaBuilder,

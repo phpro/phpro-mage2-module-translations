@@ -18,6 +18,7 @@ grumphp:
         - Magento2.Translation.ConstantUsage
         - Magento2.NamingConvention.ReservedWords
       triggered_by: [php]
+      warning_severity: 0
     phpunit:
       always_execute: true
     file_size:

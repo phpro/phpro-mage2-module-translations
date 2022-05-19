@@ -15,9 +15,6 @@ use Phpro\Translations\Model\Validator\LocaleValidator;
 
 class Translations extends AbstractEntity
 {
-    private const ENTITY_CODE = 'translations';
-    private const TABLE = 'translation';
-
     public const COL_KEY = 'string';
     public const COL_TRANSLATION = 'translate';
     public const COL_LOCALE = 'locale';
@@ -25,6 +22,8 @@ class Translations extends AbstractEntity
     public const HEADER_KEY = 'key';
     public const HEADER_TRANSLATION = 'translation';
     public const HEADER_LOCALE = 'locale';
+    private const ENTITY_CODE = 'translations';
+    private const TABLE = 'translation';
 
     /**
      * @var string[]
@@ -59,17 +58,6 @@ class Translations extends AbstractEntity
      */
     private $localeValidator;
 
-    /**
-     * Translations constructor.
-     *
-     * @param JsonHelper $jsonHelper
-     * @param ImportHelper $importExportData
-     * @param Data $importData
-     * @param ResourceConnection $resource
-     * @param Helper $resourceHelper
-     * @param ProcessingErrorAggregatorInterface $errorAggregator
-     * @param LocaleValidator $localeValidator
-     */
     public function __construct(
         JsonHelper $jsonHelper,
         ImportHelper $importExportData,

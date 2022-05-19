@@ -15,11 +15,6 @@ class Locales implements OptionSourceInterface
      */
     private $resourceConnection;
 
-    /**
-     * Locales constructor.
-     *
-     * @param ResourceConnection $resourceConnection
-     */
     public function __construct(ResourceConnection $resourceConnection)
     {
         $this->resourceConnection = $resourceConnection;

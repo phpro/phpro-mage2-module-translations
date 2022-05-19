@@ -20,11 +20,6 @@ class GenerateFrontendTranslations extends Command
      */
     private $inlineTranslationsGenerator;
 
-    /**
-     * GenerateFrontendTranslations constructor.
-     *
-     * @param InlineTranslationsGenerator $inlineTranslations
-     */
     public function __construct(
         InlineTranslationsGenerator $inlineTranslations
     ) {

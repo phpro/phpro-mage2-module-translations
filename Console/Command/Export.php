@@ -19,11 +19,6 @@ class Export extends Command
      */
     private $exporter;
 
-    /**
-     * Export constructor.
-     *
-     * @param ExportManagementInterface $exporter
-     */
     public function __construct(
         ExportManagementInterface $exporter
     ) {

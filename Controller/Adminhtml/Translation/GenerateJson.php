@@ -15,12 +15,6 @@ class GenerateJson extends Translation
      */
     private $resultPageFactory;
 
-    /**
-     * GenerateJson constructor.
-     *
-     * @param Context $context
-     * @param PageFactory $resultPageFactory
-     */
     public function __construct(
         Context $context,
         PageFactory $resultPageFactory

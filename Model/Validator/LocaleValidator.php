@@ -17,11 +17,6 @@ class LocaleValidator
      */
     private $locales = [];
 
-    /**
-     * LocaleValidator constructor.
-     *
-     * @param ListsInterface $localeLists
-     */
     public function __construct(ListsInterface $localeLists)
     {
         $this->localeLists = $localeLists;

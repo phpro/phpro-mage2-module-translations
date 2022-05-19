@@ -67,21 +67,6 @@ class TranslationRepository implements TranslationRepositoryInterface
      */
     private $extensibleDataObjectConverter;
 
-    /**
-     * TranslationRepository constructor.
-     *
-     * @param ResourceTranslation $resource
-     * @param TranslationFactory $translationFactory
-     * @param TranslationInterfaceFactory $dataTranslationFactory
-     * @param TranslationCollectionFactory $translationCollectionFactory
-     * @param TranslationSearchResultsInterfaceFactory $searchResultsFactory
-     * @param DataObjectHelper $dataObjectHelper
-     * @param DataObjectProcessor $dataObjectProcessor
-     * @param StoreManagerInterface $storeManager
-     * @param CollectionProcessorInterface $collectionProcessor
-     * @param JoinProcessorInterface $extensionAttributesJoinProcessor
-     * @param ExtensibleDataObjectConverter $extensibleDataObjectConverter
-     */
     public function __construct(
         ResourceTranslation $resource,
         TranslationFactory $translationFactory,

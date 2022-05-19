@@ -10,8 +10,8 @@ class Translation extends AbstractDb
     /**
      * @param string $translationKey
      * @param array $locales
-     * @return $this
      * @throws \Exception
+     * @return $this
      */
     public function deleteByTranslationKeyAndLocales(string $translationKey, array $locales)
     {
