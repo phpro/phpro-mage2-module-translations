@@ -5,11 +5,11 @@ namespace Phpro\Translations\Api\Data;
 
 interface TranslationInterface extends \Magento\Framework\Api\ExtensibleDataInterface
 {
-    const STRING = 'string';
-    const LOCALE = 'locale';
-    const TRANSLATE = 'translate';
-    const FRONTEND = 'frontend';
-    const KEY_ID = 'key_id';
+    public const STRING = 'string';
+    public const LOCALE = 'locale';
+    public const TRANSLATE = 'translate';
+    public const FRONTEND = 'frontend';
+    public const KEY_ID = 'key_id';
 
     /**
      * @return int|null
@@ -68,12 +68,14 @@ interface TranslationInterface extends \Magento\Framework\Api\ExtensibleDataInte
 
     /**
      * Retrieve existing extension attributes object or create a new one.
+     *
      * @return \Phpro\Translations\Api\Data\TranslationExtensionInterface|null
      */
     public function getExtensionAttributes();
 
     /**
      * Set an extension attributes object.
+     *
      * @param \Phpro\Translations\Api\Data\TranslationExtensionInterface $extensionAttributes
      * @return $this
      */

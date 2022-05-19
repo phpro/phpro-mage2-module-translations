@@ -2,7 +2,7 @@ grumphp:
   tasks:
     phpcsfixer:
       config_contains_finder: true
-      config: .php_cs
+      config: .php-cs-fixer.php
       triggered_by: [php]
     phplint:
       triggered_by: [php]
@@ -18,6 +18,7 @@ grumphp:
         - Magento2.Translation.ConstantUsage
         - Magento2.NamingConvention.ReservedWords
       triggered_by: [php]
+      warning_severity: 0
     phpunit:
       always_execute: true
     file_size:

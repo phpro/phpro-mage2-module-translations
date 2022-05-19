@@ -93,8 +93,10 @@ class TranslationRepository implements TranslationRepositoryInterface
         $this->extensibleDataObjectConverter = $extensibleDataObjectConverter;
     }
 
+
     /**
-     * {@inheritdoc
+     * @param TranslationInterface $translation
+     * @return TranslationInterface
      */
     public function save(TranslationInterface $translation)
     {

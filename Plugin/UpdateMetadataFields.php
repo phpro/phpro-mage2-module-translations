@@ -14,8 +14,14 @@ use Phpro\Translations\Model\Import\Translations;
  */
 class UpdateMetadataFields
 {
-    const UI_COMPONENT_NAME = 'phpro_translations_listing';
+    private const UI_COMPONENT_NAME = 'phpro_translations_listing';
 
+    /**
+     * @param Subject $subject
+     * @param $result
+     * @param UiComponentInterface $component
+     * @return array|mixed
+     */
     public function afterGetFields(Subject $subject, $result, UiComponentInterface $component)
     {
         if (self::UI_COMPONENT_NAME === $component->getName()) {
@@ -29,6 +35,13 @@ class UpdateMetadataFields
         return $result;
     }
 
+
+    /**
+     * @param Subject $subject
+     * @param $result
+     * @param UiComponentInterface $component
+     * @return array|mixed
+     */
     public function afterGetHeaders(Subject $subject, $result, UiComponentInterface $component)
     {
         if (self::UI_COMPONENT_NAME === $component->getName()) {

@@ -12,7 +12,7 @@ use Phpro\Translations\Model\Data\ExportStats;
 
 class ExportManagement implements ExportManagementInterface
 {
-    const CSV_SUFFIX = '_export.csv';
+    private const CSV_SUFFIX = '_export.csv';
 
     /**
      * @var Csv
@@ -44,6 +44,10 @@ class ExportManagement implements ExportManagementInterface
         $this->directoryList = $directoryList;
     }
 
+    /**
+     * @param array|null $locales
+     * @return ExportStats
+     */
     public function export(?array $locales): ExportStats
     {
         $this->csv->setDelimiter(',');
@@ -60,14 +64,24 @@ class ExportManagement implements ExportManagementInterface
         return ExportStats::fromRawData($fileName, $result->getTotalCount());
     }
 
+    /**
+     * @param \Magento\Framework\Api\SearchResultsInterface $result
+     * @return \Generator
+     */
     private function formatResultsToCsvData(\Magento\Framework\Api\SearchResultsInterface $result): \Generator
     {
-        /** @var \Phpro\Translations\Api\Data\TranslationInterface $item */
+        /**
+         * @var \Phpro\Translations\Api\Data\TranslationInterface $item
+         */
         foreach ($result->getItems() as $item) {
             yield [$item->getString(), $item->getTranslate(), $item->getLocale()];
         }
     }
 
+    /**
+     * @param string $suffix
+     * @return string
+     */
     private function getExportPath(string $suffix): string
     {
         $date = new \DateTime();

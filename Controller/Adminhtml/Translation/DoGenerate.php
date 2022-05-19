@@ -38,7 +38,9 @@ class DoGenerate extends Action
      */
     public function execute()
     {
-        /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
+        /**
+         * @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect
+         */
         $resultRedirect = $this->resultRedirectFactory->create();
         $data = $this->getRequest()->getPostValue();
 
@@ -66,6 +68,10 @@ class DoGenerate extends Action
         return $resultRedirect->setPath('*/*/generatejson');
     }
 
+    /**
+     * @param array $storeIds
+     * @return InlineGenerateStatsCollection
+     */
     private function generatedTranslations(array $storeIds): InlineGenerateStatsCollection
     {
         if (isset($storeIds[0]) && (0 === $storeIds[0])) {

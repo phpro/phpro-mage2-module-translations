@@ -30,7 +30,7 @@ class InlineEdit extends Action
     }
 
     /**
-     * @inheridoc
+     * @inheritDoc
      */
     public function execute()
     {

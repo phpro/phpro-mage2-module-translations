@@ -105,6 +105,12 @@ class TranslationDataManagement implements TranslationDataManagementInterface
         }
     }
 
+    /**
+     * @param string $translationKey
+     * @param string $translationValue
+     * @param string $locale
+     * @throws \Exception
+     */
     private function insertTranslation(string $translationKey, string $translationValue, string $locale)
     {
         try {
@@ -133,6 +139,9 @@ class TranslationDataManagement implements TranslationDataManagementInterface
         }
     }
 
+    /**
+     * @return array
+     */
     private function getEnabledLocales(): array
     {
         if (!empty($this->enabledLocales)) {

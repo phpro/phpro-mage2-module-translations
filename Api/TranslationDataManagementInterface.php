@@ -7,6 +7,7 @@ interface TranslationDataManagementInterface
 {
     /**
      * Add the translation key for all enabled locales of the Magento instance.
+     *
      * If default translation is not set, the translation key will be used as default translation.
      *
      * @param string $translationKey
@@ -25,6 +26,7 @@ interface TranslationDataManagementInterface
 
     /**
      * Delete a translation for given translation key and locale(s).
+     *
      * In case no locales are given, all enabled locales will be used.
      *
      * @param string $translationKey

@@ -9,6 +9,7 @@ interface ImportManagementInterface
 {
     /**
      * Import Magento translation CSV to the database.
+     *
      * Example structure: "Foo","Foo value",module,Magento_Catalog
      *
      * @param string $filePath
@@ -20,6 +21,7 @@ interface ImportManagementInterface
 
     /**
      * Import translation CSV (based on export) to the database.
+     *
      * Example structure: "Bar","Bar value",en_US
      *
      * @param string $filePath

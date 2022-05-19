@@ -9,7 +9,7 @@ use Magento\Ui\DataProvider\AbstractDataProvider;
 class EmptyDataProvider extends AbstractDataProvider
 {
     /**
-     * @inheridoc
+     * @inheritDoc
      */
     public function addFilter(Filter $filter)
     {
@@ -17,7 +17,7 @@ class EmptyDataProvider extends AbstractDataProvider
     }
 
     /**
-     * @inheridoc
+     * @inheritDoc
      */
     public function getData()
     {

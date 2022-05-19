@@ -9,7 +9,7 @@ use Phpro\Translations\Controller\Adminhtml\Translation;
 
 class NewAction extends Translation
 {
-    const ADMIN_RESOURCE = 'Phpro_Translations::Translation_new_action';
+    public const ADMIN_RESOURCE = 'Phpro_Translations::Translation_new_action';
 
     /**
      * @var PageFactory
@@ -25,7 +25,7 @@ class NewAction extends Translation
     }
 
     /**
-     * @inheridoc
+     * @inheritDoc
      */
     public function execute()
     {

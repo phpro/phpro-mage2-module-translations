@@ -12,7 +12,7 @@ use Phpro\Translations\Controller\Adminhtml\Translation;
 
 class Edit extends Translation
 {
-    const ADMIN_RESOURCE = 'Phpro_Translations::Translation_update';
+    public const ADMIN_RESOURCE = 'Phpro_Translations::Translation_update';
 
     /**
      * @var PageFactory
@@ -42,7 +42,7 @@ class Edit extends Translation
     }
 
     /**
-     * @inheridoc
+     * @inheritDoc
      */
     public function execute()
     {

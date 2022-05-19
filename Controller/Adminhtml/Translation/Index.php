@@ -9,7 +9,7 @@ use Magento\Framework\View\Result\PageFactory;
 
 class Index extends Action
 {
-    const ADMIN_RESOURCE = 'Phpro_Translations::Translation';
+    public const ADMIN_RESOURCE = 'Phpro_Translations::Translation';
 
     /**
      * @var PageFactory
@@ -25,7 +25,7 @@ class Index extends Action
     }
 
     /**
-     * @inheridoc
+     * @inheritDoc
      */
     public function execute()
     {

@@ -7,5 +7,11 @@ use Phpro\Translations\Model\Data\ExportStats;
 
 interface ExportManagementInterface
 {
+    /**
+     * Export function
+     *
+     * @param array|null $locale
+     * @return ExportStats
+     */
     public function export(?array $locale): ExportStats;
 }

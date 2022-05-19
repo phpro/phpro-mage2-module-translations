@@ -11,8 +11,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class Export extends Command
 {
-    const COMMAND_NAME = 'phpro:translations:export';
-    const ARGUMENT_LOCALES = 'locales';
+    private const COMMAND_NAME = 'phpro:translations:export';
+    private const ARGUMENT_LOCALES = 'locales';
 
     /**
      * @var ExportManagementInterface
@@ -26,6 +26,9 @@ class Export extends Command
         parent::__construct();
     }
 
+    /**
+     * Configure export command
+     */
     protected function configure(): void
     {
         $this->setName(self::COMMAND_NAME);
@@ -35,6 +38,10 @@ class Export extends Command
         parent::configure();
     }
 
+    /**
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     */
     protected function execute(InputInterface $input, OutputInterface $output): void
     {
         try {

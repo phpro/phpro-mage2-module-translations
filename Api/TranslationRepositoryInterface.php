@@ -10,6 +10,7 @@ interface TranslationRepositoryInterface
 
     /**
      * Save Translation
+     *
      * @param \Phpro\Translations\Api\Data\TranslationInterface $translation
      * @throws \Magento\Framework\Exception\LocalizedException
      * @return \Phpro\Translations\Api\Data\TranslationInterface
@@ -20,6 +21,7 @@ interface TranslationRepositoryInterface
 
     /**
      * Retrieve Translation
+     *
      * @param string $translationId
      * @throws \Magento\Framework\Exception\LocalizedException
      * @return \Phpro\Translations\Api\Data\TranslationInterface
@@ -28,6 +30,7 @@ interface TranslationRepositoryInterface
 
     /**
      * Retrieve Translation matching the specified criteria.
+     *
      * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
      * @throws \Magento\Framework\Exception\LocalizedException
      * @return \Phpro\Translations\Api\Data\TranslationSearchResultsInterface
@@ -38,6 +41,7 @@ interface TranslationRepositoryInterface
 
     /**
      * Delete translation by given key and locales.
+     *
      * @param string $translationKey
      * @param array $locales
      * @return bool true on success
@@ -46,6 +50,7 @@ interface TranslationRepositoryInterface
 
     /**
      * Delete Translation by ID
+     *
      * @param string $translationId
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      * @throws \Magento\Framework\Exception\LocalizedException

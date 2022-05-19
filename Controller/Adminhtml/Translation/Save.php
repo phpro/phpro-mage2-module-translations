@@ -12,7 +12,7 @@ use Phpro\Translations\Api\TranslationRepositoryInterface;
 
 class Save extends Action
 {
-    const ADMIN_RESOURCE = 'Phpro_Translations::Translation_save';
+    public const ADMIN_RESOURCE = 'Phpro_Translations::Translation_save';
 
     /**
      * @var DataPersistorInterface
@@ -35,7 +35,7 @@ class Save extends Action
     }
 
     /**
-     * @inheridoc
+     * @inheritDoc
      */
     public function execute()
     {

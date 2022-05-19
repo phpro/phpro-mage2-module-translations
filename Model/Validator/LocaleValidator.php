@@ -33,6 +33,9 @@ class LocaleValidator
         }
     }
 
+    /**
+     * @return array
+     */
     private function getSupportedLocales(): array
     {
         if (!empty($this->locales)) {

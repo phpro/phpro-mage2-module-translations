@@ -24,7 +24,7 @@ class GenerateJson extends Translation
     }
 
     /**
-     * @inheridoc
+     * @inheritDoc
      */
     public function execute()
     {

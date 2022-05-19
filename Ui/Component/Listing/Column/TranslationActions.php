@@ -7,9 +7,13 @@ use Magento\Ui\Component\Listing\Columns\Column;
 
 class TranslationActions extends Column
 {
-    const URL_PATH_EDIT = 'phpro_translations/translation/edit';
-    const URL_PATH_DELETE = 'phpro_translations/translation/delete';
-    const URL_PATH_DETAILS = 'phpro_translations/translation/details';
+    private const URL_PATH_EDIT = 'phpro_translations/translation/edit';
+    private const URL_PATH_DELETE = 'phpro_translations/translation/delete';
+    private const URL_PATH_DETAILS = 'phpro_translations/translation/details';
+
+    /**
+     * @var \Magento\Framework\UrlInterface
+     */
     protected $urlBuilder;
 
     /**

@@ -31,6 +31,13 @@ class TranslationManagement
         $this->repository = $repository;
     }
 
+    /**
+     * @param string $translationKey
+     * @param string $translationValue
+     * @param string $locale
+     * @param string $frontend
+     * @throws \Exception
+     */
     public function addTranslation(
         string $translationKey,
         string $translationValue,

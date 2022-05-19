@@ -2,14 +2,14 @@
 /**
  * PHP Coding Standards fixer configuration
  */
-use PhpCsFixer\Config;
-use PhpCsFixer\Finder;
 
-$finder = Finder::create()
+$finder = PhpCsFixer\Finder::create()
     ->in('./')
     ->name(['*.php']);
 
-return Config::create()
+return (new PhpCsFixer\Config())
+    ->setRiskyAllowed(true)
+    ->setUsingCache(false)
     ->setRules([
         '@PSR2' => true,
         'no_useless_else' => true,
@@ -40,7 +40,5 @@ return Config::create()
         'compact_nullable_typehint' => true,
         'fully_qualified_strict_types' => true,
     ])
-    ->setFinder($finder)
-    ->setRiskyAllowed(true)
-    ->setUsingCache(false);
+    ->setFinder($finder);
 

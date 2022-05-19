@@ -13,8 +13,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class GenerateFrontendTranslations extends Command
 {
-    const COMMAND_NAME = 'phpro:translations:generate-frontend-translations';
+    private const COMMAND_NAME = 'phpro:translations:generate-frontend-translations';
 
+    /**
+     * @var InlineTranslationsGenerator
+     */
     private $inlineTranslationsGenerator;
 
     public function __construct(
@@ -24,6 +27,9 @@ class GenerateFrontendTranslations extends Command
         parent::__construct();
     }
 
+    /**
+     * Configure frontend translations command
+     */
     protected function configure(): void
     {
         $this->setName(self::COMMAND_NAME);
@@ -32,6 +38,10 @@ class GenerateFrontendTranslations extends Command
         parent::configure();
     }
 
+    /**
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     */
     protected function execute(InputInterface $input, OutputInterface $output): void
     {
         try {
@@ -55,6 +65,10 @@ class GenerateFrontendTranslations extends Command
         }
     }
 
+    /**
+     * @param int $storeId
+     * @return InlineGenerateStatsCollection
+     */
     private function generatedTranslations(int $storeId): InlineGenerateStatsCollection
     {
         if (0 === $storeId) {

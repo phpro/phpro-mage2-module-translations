@@ -13,15 +13,16 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class Import extends Command
 {
-    const COMMAND_NAME = 'phpro:translations:import';
-    const ARGUMENT_CSV_FILE = 'csvfile';
-    const ARGUMENT_LOCALE = 'locale';
-    const OPTION_CLEAR_CACHE = 'clear-cache';
+    private const COMMAND_NAME = 'phpro:translations:import';
+    private const ARGUMENT_CSV_FILE = 'csvfile';
+    private const ARGUMENT_LOCALE = 'locale';
+    private const OPTION_CLEAR_CACHE = 'clear-cache';
 
     /**
      * @var ImportManagementInterface
      */
     private $importer;
+
     /**
      * @var Manager
      */
@@ -36,6 +37,9 @@ class Import extends Command
         parent::__construct();
     }
 
+    /**
+     * Configure import command
+     */
     protected function configure(): void
     {
         $this->setName(self::COMMAND_NAME);
@@ -47,6 +51,10 @@ class Import extends Command
         parent::configure();
     }
 
+    /**
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     */
     protected function execute(InputInterface $input, OutputInterface $output): void
     {
         try {

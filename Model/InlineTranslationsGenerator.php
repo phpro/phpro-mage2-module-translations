@@ -63,6 +63,9 @@ class InlineTranslationsGenerator
         $this->systemStore = $systemStore;
     }
 
+    /**
+     * @return InlineGenerateStatsCollection
+     */
     public function forAll(): InlineGenerateStatsCollection
     {
         $storeIds = [];
@@ -73,6 +76,10 @@ class InlineTranslationsGenerator
         return $this->forStores($storeIds);
     }
 
+    /**
+     * @param array $storeIds
+     * @return InlineGenerateStatsCollection
+     */
     public function forStores(array $storeIds): InlineGenerateStatsCollection
     {
         $statsCollection = new InlineGenerateStatsCollection();
@@ -85,6 +92,10 @@ class InlineTranslationsGenerator
         return $statsCollection;
     }
 
+    /**
+     * @param int $storeId
+     * @return InlineGenerateStats
+     */
     private function generate(int $storeId): InlineGenerateStats
     {
         $translations = [];
