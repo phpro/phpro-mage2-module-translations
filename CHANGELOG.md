@@ -17,3 +17,7 @@
 - PHP 8.1 compatibility
 ### Removed
 - PHP 8.0 compatibility
+
+## [1.2.1] - 2022-06-29
+### Bugfix
+- Fix return type

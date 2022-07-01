@@ -6,6 +6,7 @@ namespace Phpro\Translations\Model\Data;
 use ArrayIterator;
 use Countable;
 use IteratorAggregate;
+use Traversable;
 
 class InlineGenerateStatsCollection implements IteratorAggregate, Countable
 {
@@ -30,7 +31,7 @@ class InlineGenerateStatsCollection implements IteratorAggregate, Countable
     /**
      * @return ArrayIterator|InlineGenerateStats[]
      */
-    public function getIterator()
+    public function getIterator(): Traversable
     {
         return new ArrayIterator($this->statsItems);
     }
