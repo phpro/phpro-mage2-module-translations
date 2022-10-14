@@ -21,3 +21,7 @@
 ## [1.2.1] - 2022-06-29
 ### Bugfix
 - Fix return type
+
+## [1.2.2] - 2022-10-14
+### Added
+- Hyva support: remove requirejs from head.additional
