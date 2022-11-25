@@ -92,20 +92,36 @@ class InlineTranslationsGenerator
         return $statsCollection;
     }
 
+    public function forStoresWithThemePath(array $stores)
+    {
+        $statsCollection = new InlineGenerateStatsCollection();
+        foreach ($stores as $store) {
+            $statsCollection->add(
+                $this->generate((int)$store['id'], $store['path'])
+            );
+        }
+
+        return $statsCollection;
+    }
+
     /**
      * @param int $storeId
+     * @param string|null $themePath
+     * @throws \Exception
      * @return InlineGenerateStats
      */
-    private function generate(int $storeId): InlineGenerateStats
+    private function generate(int $storeId, string $themePath = null): InlineGenerateStats
     {
         $translations = [];
         $area = 'frontend';
 
-        $this->state->emulateAreaCode($area, function () use ($storeId, $area, &$translations) {
+        $this->state->emulateAreaCode($area, function () use ($storeId, $area, &$translations, $themePath) {
             // We need the emulation start and stop for saving the translation json file to have the correct context
             $this->emulation->startEnvironmentEmulation($storeId, $area, true);
             $locale = $this->viewDesign->getLocale();
-            $themePath = $this->viewDesign->getDesignTheme()->getThemePath();
+            if (null === $themePath) {
+                $themePath = $this->viewDesign->getDesignTheme()->getThemePath();
+            }
             // set locale and load translations string:
             $this->translate
                 ->setLocale($locale)
