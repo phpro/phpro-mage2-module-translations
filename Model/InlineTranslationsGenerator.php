@@ -93,7 +93,7 @@ class InlineTranslationsGenerator
         return $statsCollection;
     }
 
-    public function forStoresWithThemePath(StoreThemePathCollection $stores)
+    public function forStoresWithThemePath(StoreThemePathCollection $stores): InlineGenerateStatsCollection
     {
         $statsCollection = new InlineGenerateStatsCollection();
         foreach ($stores as $store) {
