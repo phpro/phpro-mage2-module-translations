@@ -22,11 +22,11 @@ class StoreThemePathCollection implements IteratorAggregate, Countable
     }
 
     /**
-     * @param StoreThemePath $stats
+     * @param StoreThemePath $storeThemePath
      */
-    public function add(StoreThemePath $stats)
+    public function add(StoreThemePath $storeThemePath)
     {
-        $this->storeThemeItems[] = $stats;
+        $this->storeThemeItems[] = $storeThemePath;
     }
 
     /**
