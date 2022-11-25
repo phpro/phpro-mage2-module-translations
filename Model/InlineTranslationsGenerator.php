@@ -12,6 +12,7 @@ use Magento\Store\Model\System\Store as SystemStore;
 use Magento\Translation\Model\Js\DataProviderInterface;
 use Phpro\Translations\Model\Data\InlineGenerateStats;
 use Phpro\Translations\Model\Data\InlineGenerateStatsCollection;
+use Phpro\Translations\Model\Data\StoreThemePathCollection;
 use Phpro\Translations\Model\InlineTranslations\FileManager;
 
 class InlineTranslationsGenerator
@@ -92,12 +93,12 @@ class InlineTranslationsGenerator
         return $statsCollection;
     }
 
-    public function forStoresWithThemePath(array $stores)
+    public function forStoresWithThemePath(StoreThemePathCollection $stores)
     {
         $statsCollection = new InlineGenerateStatsCollection();
         foreach ($stores as $store) {
             $statsCollection->add(
-                $this->generate((int)$store['id'], $store['path'])
+                $this->generate($store->getStoreId(), $store->getPath())
             );
         }
 
