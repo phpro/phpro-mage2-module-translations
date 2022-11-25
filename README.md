@@ -233,3 +233,9 @@ With a rest API call, the translations can be fetched and stored in the PWA tran
 curl -G -k -H "Authorization: Bearer <token>" --data-urlencode "searchCriteria[filter_groups][0][filters][0][field]=frontend" --data-urlencode "searchCriteria[filter_groups][0][filters][0][value]=1" --data-urlencode "searchCriteria[filter_groups][1][filters][0][field]=locale" --data-urlencode "searchCriteria[filter_groups][1][filters][0][value]=<locale>" <Magento base url>rest/V1/phpro-translations/translation/search
 ```
 
+## Hyvä
+
+Install the Hyvä compatibilty module. Minimum version is 1.2.3.
+```
+composer require hyva-themes/magento2-phpro-translations
+```
