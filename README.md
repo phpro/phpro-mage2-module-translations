@@ -1,5 +1,7 @@
 ![](https://github.com/phpro/phpro-mage2-module-translations/workflows/.github/workflows/grumphp.yml/badge.svg)
 
+![](https://shields.io/badge/Hyv%C3%A4_Theme-Compatible---?style=for-the-badge&labelColor=F6F7FF&color=0B23B9&logoColor=0B23B9&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTkuNjI1IDkuNzdjMS4zNTUtMS4wNDcgMy4wMDgtMS43MDcgNC44NjctMS43MDcgMy44MDUgMCA3LjUwOCAyLjM2NyA3LjUwOCA4LjQzM1YyNGgtNC44Njd2LTcuNTA0YzAtMy4xMjktMS41MjgtNC4zMDgtMy42MTMtNC4zMDgtMS43MjMgMC0yLjk3My45Ni0zLjY2OCAxLjk3NlYyNEg0Ljk2NVY0LjUzMUgyTDMuNTYzIDBoNi4wNjJ2OS43N3pNMTYuNjQgMEgyMmwtMS41NyA0LjUzMWgtNS4zNTJMMTYuNjQgMHoiLz48L3N2Zz4K)
+
 # Translation module for Magento 2
 
 The `Phpro_Translations` module helps you to manage translations via the Magento backend.
@@ -233,3 +235,9 @@ With a rest API call, the translations can be fetched and stored in the PWA tran
 curl -G -k -H "Authorization: Bearer <token>" --data-urlencode "searchCriteria[filter_groups][0][filters][0][field]=frontend" --data-urlencode "searchCriteria[filter_groups][0][filters][0][value]=1" --data-urlencode "searchCriteria[filter_groups][1][filters][0][field]=locale" --data-urlencode "searchCriteria[filter_groups][1][filters][0][value]=<locale>" <Magento base url>rest/V1/phpro-translations/translation/search
 ```
 
+## Hyvä
+
+Install the Hyvä compatibilty module. Minimum version is 1.2.3.
+```
+composer require hyva-themes/magento2-phpro-translations
+```

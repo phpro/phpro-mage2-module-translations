@@ -12,6 +12,7 @@ use Magento\Store\Model\System\Store as SystemStore;
 use Magento\Translation\Model\Js\DataProviderInterface;
 use Phpro\Translations\Model\Data\InlineGenerateStats;
 use Phpro\Translations\Model\Data\InlineGenerateStatsCollection;
+use Phpro\Translations\Model\Data\StoreThemePathCollection;
 use Phpro\Translations\Model\InlineTranslations\FileManager;
 
 class InlineTranslationsGenerator
@@ -92,20 +93,36 @@ class InlineTranslationsGenerator
         return $statsCollection;
     }
 
+    public function forStoresWithThemePath(StoreThemePathCollection $stores): InlineGenerateStatsCollection
+    {
+        $statsCollection = new InlineGenerateStatsCollection();
+        foreach ($stores as $store) {
+            $statsCollection->add(
+                $this->generate($store->getStoreId(), $store->getPath())
+            );
+        }
+
+        return $statsCollection;
+    }
+
     /**
      * @param int $storeId
+     * @param string|null $themePath
+     * @throws \Exception
      * @return InlineGenerateStats
      */
-    private function generate(int $storeId): InlineGenerateStats
+    private function generate(int $storeId, string $themePath = null): InlineGenerateStats
     {
         $translations = [];
         $area = 'frontend';
 
-        $this->state->emulateAreaCode($area, function () use ($storeId, $area, &$translations) {
+        $this->state->emulateAreaCode($area, function () use ($storeId, $area, &$translations, $themePath) {
             // We need the emulation start and stop for saving the translation json file to have the correct context
             $this->emulation->startEnvironmentEmulation($storeId, $area, true);
             $locale = $this->viewDesign->getLocale();
-            $themePath = $this->viewDesign->getDesignTheme()->getThemePath();
+            if (null === $themePath) {
+                $themePath = $this->viewDesign->getDesignTheme()->getThemePath();
+            }
             // set locale and load translations string:
             $this->translate
                 ->setLocale($locale)
