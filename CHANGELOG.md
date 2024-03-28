@@ -25,3 +25,7 @@
 ## [1.2.2] - 2022-10-14
 ### Added
 - Hyva support: remove requirejs from head.additional
+- 
+## [1.2.3] - 2024-03-28
+### Updated
+- PHP ^8.1 compatibility 
