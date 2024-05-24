@@ -53,7 +53,7 @@ class ImportFull extends Command
      * @param InputInterface $input
      * @param OutputInterface $output
      */
-    protected function execute(InputInterface $input, OutputInterface $output): void
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         try {
             $csvFile = $input->getArgument(self::ARGUMENT_CSV_FILE);
@@ -81,5 +81,7 @@ class ImportFull extends Command
         } catch (\Exception $e) {
             $output->writeln('<error>' . $e->getMessage() . '</error>');
         }
+
+        return 0;
     }
 }
