@@ -8,11 +8,9 @@ jobs:
       fail-fast: true
       matrix:
         php-versions:
-          - "7.4"
           - "8.1"
         dependencies:
           - "lowest"
-          - "highest"
     steps:
       -   name: Checkout repo
           uses: actions/checkout@v2
