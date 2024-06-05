@@ -29,3 +29,8 @@
 ## [1.3.0] - 2024-03-28
 ### Updated
 - PHP ^8.1 compatibility 
+
+## [1.4.0] - 2024-06-05
+### Bugfix
+- Fix return types console commands
+- Locales are not found if set in env.php and not in core_config_table

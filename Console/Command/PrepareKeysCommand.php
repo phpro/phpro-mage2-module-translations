@@ -37,6 +37,7 @@ class PrepareKeysCommand extends Command
         ResolverFactory $optionResolverFactory,
         Parser $parser,
         TranslationDataManagementInterface $translationDataManagement,
+        private readonly \Phpro\Translations\Model\Translation\Source\Locales $localeSource,
         string $name = null
     ) {
         $this->optionResolverFactory = $optionResolverFactory;
@@ -62,30 +63,37 @@ class PrepareKeysCommand extends Command
      * @param InputInterface  $input
      * @param OutputInterface $output
      *
-     * @return int
+     * @return void
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $phraseCollector = new PhraseCollector(new Tokenizer());
-        $adapters = [
-            'php' => new Php($phraseCollector),
-            'html' => new Html(),
-            'js' => new Js(),
-            'xml' => new Xml(),
-        ];
-        $optionResolver = $this->optionResolverFactory->create(BP, false);
-        foreach ($adapters as $type => $adapter) {
-            $this->parser->addAdapter($type, $adapter);
+        $exitCode = 0;
+
+        try {
+            $phraseCollector = new PhraseCollector(new Tokenizer());
+            $adapters = [
+                'php' => new Php($phraseCollector),
+                'html' => new Html(),
+                'js' => new Js(),
+                'xml' => new Xml(),
+            ];
+            $optionResolver = $this->optionResolverFactory->create(BP, false);
+            foreach ($adapters as $type => $adapter) {
+                $this->parser->addAdapter($type, $adapter);
+            }
+            $this->parser->parse($optionResolver->getOptions());
+            $phraseList = $this->parser->getPhrases();
+
+            foreach ($phraseList as $phrase) {
+                $this->translationDataManagement->prepare($phrase->getPhrase(), $phrase->getTranslation());
+            }
+
+            $output->writeln('<info>Keys successfully created.</info>');
+        } catch (\Exception $e) {
+            $output->writeln('<error>' . $e->getMessage() . '</error>');
+            $exitCode = 1;
         }
-        $this->parser->parse($optionResolver->getOptions());
-        $phraseList = $this->parser->getPhrases();
 
-        foreach ($phraseList as $phrase) {
-            $this->translationDataManagement->prepare($phrase->getPhrase(), $phrase->getTranslation());
-        }
-
-        $output->writeln('<info>Keys successfully created.</info>');
-
-        return 0;
+        return $exitCode;
     }
 }

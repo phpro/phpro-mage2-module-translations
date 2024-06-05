@@ -3,40 +3,31 @@ declare(strict_types=1);
 
 namespace Phpro\Translations\Model\Translation\Source;
 
-use Magento\Framework\App\ResourceConnection;
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Data\OptionSourceInterface;
+use Magento\Store\Model\StoreManager;
 
 class Locales implements OptionSourceInterface
 {
     private const XML_PATH_LOCALE = 'general/locale/code';
 
-    /**
-     * @var ResourceConnection
-     */
-    private $resourceConnection;
-
-    public function __construct(ResourceConnection $resourceConnection)
-    {
-        $this->resourceConnection = $resourceConnection;
+    public function __construct(
+        private readonly ScopeConfigInterface $scopeConfig,
+        private readonly StoreManager $storeManager,
+    ) {
     }
 
     /**
      * @inheritDoc
      */
-    public function toOptionArray()
+    public function toOptionArray(): array
     {
-        $result = [];
-        $connection = $this->resourceConnection->getConnection();
-        $bind = [':config_path' => self::XML_PATH_LOCALE];
-        $select = $connection
-            ->select()
-            ->from($this->resourceConnection->getTableName('core_config_data'), 'value')
-            ->distinct(true)
-            ->where('path = :config_path');
-        $rowSet = $connection->fetchAll($select, $bind);
+        $stores = $this->storeManager->getStores();
 
-        foreach ($rowSet as $row) {
-            $result[] = ['value' => $row['value'], 'label' => $row['value']];
+        $result = [];
+        foreach ($stores as $store) {
+            $locale = $this->scopeConfig->getValue(self::XML_PATH_LOCALE, 'stores', $store->getId());
+            $result[] = ['value' => $locale, 'label' => $store->getName()];
         }
 
         return $result;
