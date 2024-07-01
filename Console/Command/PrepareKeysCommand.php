@@ -67,8 +67,6 @@ class PrepareKeysCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $exitCode = 0;
-
         try {
             $phraseCollector = new PhraseCollector(new Tokenizer());
             $adapters = [
@@ -91,9 +89,9 @@ class PrepareKeysCommand extends Command
             $output->writeln('<info>Keys successfully created.</info>');
         } catch (\Exception $e) {
             $output->writeln('<error>' . $e->getMessage() . '</error>');
-            $exitCode = 1;
+            return Command::FAILURE;
         }
 
-        return $exitCode;
+        return Command::SUCCESS;
     }
 }

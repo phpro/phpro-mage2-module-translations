@@ -25,12 +25,14 @@
 ## [1.2.2] - 2022-10-14
 ### Added
 - Hyva support: remove requirejs from head.additional
-- 
+
 ## [1.3.0] - 2024-03-28
 ### Updated
 - PHP ^8.1 compatibility 
 
 ## [1.4.0] - 2024-06-05
+### Updated
+- Set minimum PHP version to 8.3
 ### Bugfix
 - Fix return types console commands
 - Locales are not found if set in env.php and not in core_config_table

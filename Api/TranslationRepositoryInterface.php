@@ -11,9 +11,9 @@ interface TranslationRepositoryInterface
     /**
      * Save Translation
      *
-     * @param \Phpro\Translations\Api\Data\TranslationInterface $translation
+     * @param Data\TranslationInterface $translation
      * @throws \Magento\Framework\Exception\LocalizedException
-     * @return \Phpro\Translations\Api\Data\TranslationInterface
+     * @return Data\TranslationInterface
      */
     public function save(
         Data\TranslationInterface $translation
@@ -24,16 +24,16 @@ interface TranslationRepositoryInterface
      *
      * @param string $translationId
      * @throws \Magento\Framework\Exception\LocalizedException
-     * @return \Phpro\Translations\Api\Data\TranslationInterface
+     * @return Data\TranslationInterface
      */
     public function getById($translationId);
 
     /**
      * Retrieve Translation matching the specified criteria.
      *
-     * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
+     * @param SearchCriteriaInterface $searchCriteria
      * @throws \Magento\Framework\Exception\LocalizedException
-     * @return \Phpro\Translations\Api\Data\TranslationSearchResultsInterface
+     * @return Data\TranslationSearchResultsInterface
      */
     public function getList(
         SearchCriteriaInterface $searchCriteria
