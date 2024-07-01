@@ -42,7 +42,7 @@ class Export extends Command
      * @param InputInterface $input
      * @param OutputInterface $output
      */
-    protected function execute(InputInterface $input, OutputInterface $output): void
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         try {
             $locales = $input->getArgument(self::ARGUMENT_LOCALES);
@@ -61,6 +61,9 @@ class Export extends Command
             $output->writeln('<info>Done!</info>');
         } catch (\Exception $e) {
             $output->writeln('<error>' . $e->getMessage() . '</error>');
+            return Command::FAILURE;
         }
+
+        return Command::SUCCESS;
     }
 }

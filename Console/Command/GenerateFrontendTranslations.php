@@ -42,7 +42,7 @@ class GenerateFrontendTranslations extends Command
      * @param InputInterface $input
      * @param OutputInterface $output
      */
-    protected function execute(InputInterface $input, OutputInterface $output): void
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         try {
             $storeId = (int)$input->getArgument('storeId');
@@ -62,7 +62,10 @@ class GenerateFrontendTranslations extends Command
             $output->writeln('<info>Please clean full_page and block_html caches manually</info>');
         } catch (\Exception $e) {
             $output->writeln('<error>' . $e->getMessage() . '</error>');
+            return Command::FAILURE;
         }
+
+        return Command::SUCCESS;
     }
 
     /**

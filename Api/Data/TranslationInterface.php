@@ -69,14 +69,14 @@ interface TranslationInterface extends \Magento\Framework\Api\ExtensibleDataInte
     /**
      * Retrieve existing extension attributes object or create a new one.
      *
-     * @return \Phpro\Translations\Api\Data\TranslationExtensionInterface|null
+     * @return TranslationExtensionInterface|null
      */
     public function getExtensionAttributes();
 
     /**
      * Set an extension attributes object.
      *
-     * @param \Phpro\Translations\Api\Data\TranslationExtensionInterface $extensionAttributes
+     * @param TranslationExtensionInterface $extensionAttributes
      * @return $this
      */
     public function setExtensionAttributes(

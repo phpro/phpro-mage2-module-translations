@@ -37,6 +37,7 @@ class PrepareKeysCommand extends Command
         ResolverFactory $optionResolverFactory,
         Parser $parser,
         TranslationDataManagementInterface $translationDataManagement,
+        private readonly \Phpro\Translations\Model\Translation\Source\Locales $localeSource,
         string $name = null
     ) {
         $this->optionResolverFactory = $optionResolverFactory;
@@ -64,26 +65,33 @@ class PrepareKeysCommand extends Command
      *
      * @return void
      */
-    protected function execute(InputInterface $input, OutputInterface $output): void
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $phraseCollector = new PhraseCollector(new Tokenizer());
-        $adapters = [
-            'php' => new Php($phraseCollector),
-            'html' => new Html(),
-            'js' => new Js(),
-            'xml' => new Xml(),
-        ];
-        $optionResolver = $this->optionResolverFactory->create(BP, false);
-        foreach ($adapters as $type => $adapter) {
-            $this->parser->addAdapter($type, $adapter);
-        }
-        $this->parser->parse($optionResolver->getOptions());
-        $phraseList = $this->parser->getPhrases();
+        try {
+            $phraseCollector = new PhraseCollector(new Tokenizer());
+            $adapters = [
+                'php' => new Php($phraseCollector),
+                'html' => new Html(),
+                'js' => new Js(),
+                'xml' => new Xml(),
+            ];
+            $optionResolver = $this->optionResolverFactory->create(BP, false);
+            foreach ($adapters as $type => $adapter) {
+                $this->parser->addAdapter($type, $adapter);
+            }
+            $this->parser->parse($optionResolver->getOptions());
+            $phraseList = $this->parser->getPhrases();
 
-        foreach ($phraseList as $phrase) {
-            $this->translationDataManagement->prepare($phrase->getPhrase(), $phrase->getTranslation());
+            foreach ($phraseList as $phrase) {
+                $this->translationDataManagement->prepare($phrase->getPhrase(), $phrase->getTranslation());
+            }
+
+            $output->writeln('<info>Keys successfully created.</info>');
+        } catch (\Exception $e) {
+            $output->writeln('<error>' . $e->getMessage() . '</error>');
+            return Command::FAILURE;
         }
 
-        $output->writeln('<info>Keys successfully created.</info>');
+        return Command::SUCCESS;
     }
 }
