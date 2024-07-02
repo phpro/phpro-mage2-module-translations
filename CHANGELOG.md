@@ -36,3 +36,7 @@
 ### Bugfix
 - Fix return types console commands
 - Locales are not found if set in env.php and not in core_config_table
+
+## [1.4.1] - 2024-07-02
+### Bugfix
+- Fix faulty doc blocs preventing di:compile
