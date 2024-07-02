@@ -38,7 +38,7 @@ return (new PhpCsFixer\Config())
         'strict_param' => true,
         'array_indentation' => true,
         'compact_nullable_typehint' => true,
-        'fully_qualified_strict_types' => true,
+        'fully_qualified_strict_types' => false,
     ])
     ->setFinder($finder);
 
