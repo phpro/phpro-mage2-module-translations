@@ -37,7 +37,6 @@ class PrepareKeysCommand extends Command
         ResolverFactory $optionResolverFactory,
         Parser $parser,
         TranslationDataManagementInterface $translationDataManagement,
-        private readonly \Phpro\Translations\Model\Translation\Source\Locales $localeSource,
         string $name = null
     ) {
         $this->optionResolverFactory = $optionResolverFactory;

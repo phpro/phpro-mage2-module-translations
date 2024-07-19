@@ -44,3 +44,9 @@
 ## [1.4.2] - 2024-07-05
 ### Updated
 - Allow PHP 8.2
+
+## [1.5.0] - 2024-07-19
+### Bugfix
+- Proxied classes used in console commands
+### Removed
+- Removed \Phpro\Translations\Model\Translation\Source\Locales dependency in \Phpro\Translations\Console\Command\PrepareKeysCommand
