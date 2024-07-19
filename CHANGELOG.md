@@ -35,6 +35,16 @@
 - Fix return types console commands
 - Locales are not found if set in env.php and not in core_config_table
 
+## [1.4.1] - 2024-07-02
+### Bugfix
+- Fix faulty doc blocs preventing di:compile
+
+## [1.4.2] - 2024-07-05
+### Updated
+- Allow PHP 8.2
+
 ## [1.5.0] - 2024-07-19
 ### Bugfix
 - Proxied classes used in console commands
+### Removed
+- Removed \Phpro\Translations\Model\Translation\Source\Locales dependency in \Phpro\Translations\Console\Command\PrepareKeysCommand
