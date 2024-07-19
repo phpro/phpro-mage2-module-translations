@@ -34,3 +34,7 @@
 ### Bugfix
 - Fix return types console commands
 - Locales are not found if set in env.php and not in core_config_table
+
+## [1.5.0] - 2024-07-19
+### Bugfix
+- Proxied classes used in console commands
