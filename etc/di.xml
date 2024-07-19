@@ -37,4 +37,29 @@
             </argument>
         </arguments>
     </type>
+	<type name="Phpro\Translations\Console\Command\Export">
+		<arguments>
+			<argument name="exporter" xsi:type="object">Phpro\Translations\Api\ExportManagementInterface\Proxy</argument>
+		</arguments>
+	</type>
+	<type name="Phpro\Translations\Console\Command\GenerateFrontendTranslations">
+		<arguments>
+			<argument name="inlineTranslations" xsi:type="object">Phpro\Translations\Model\InlineTranslationsGenerator\Proxy</argument>
+		</arguments>
+	</type>
+	<type name="Phpro\Translations\Console\Command\Import">
+		<arguments>
+			<argument name="importer" xsi:type="object">Phpro\Translations\Api\ImportManagementInterface\Proxy</argument>
+		</arguments>
+	</type>
+	<type name="Phpro\Translations\Console\Command\ImportFull">
+		<arguments>
+			<argument name="importer" xsi:type="object">Phpro\Translations\Api\ImportManagementInterface\Proxy</argument>
+		</arguments>
+	</type>
+	<type name="Phpro\Translations\Console\Command\PrepareKeysCommand">
+		<arguments>
+			<argument name="importer" xsi:type="object">Phpro\Translations\Api\TranslationDataManagementInterface\Proxy</argument>
+		</arguments>
+	</type>
 </config>
