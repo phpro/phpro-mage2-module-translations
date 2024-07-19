@@ -59,7 +59,7 @@
 	</type>
 	<type name="Phpro\Translations\Console\Command\PrepareKeysCommand">
 		<arguments>
-			<argument name="importer" xsi:type="object">Phpro\Translations\Api\TranslationDataManagementInterface\Proxy</argument>
+			<argument name="translationDataManagement" xsi:type="object">Phpro\Translations\Api\TranslationDataManagementInterface\Proxy</argument>
 		</arguments>
 	</type>
 </config>
