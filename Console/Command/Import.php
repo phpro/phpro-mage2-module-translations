@@ -57,8 +57,6 @@ class Import extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $exitCode = 0;
-
         try {
             $csvFile = $input->getArgument(self::ARGUMENT_CSV_FILE);
             $locale = $input->getArgument(self::ARGUMENT_LOCALE);
@@ -86,9 +84,9 @@ class Import extends Command
             $output->writeln('<info>Done!</info>');
         } catch (\Exception $e) {
             $output->writeln('<error>' . $e->getMessage() . '</error>');
-            $exitCode = 1;
+            return Command::FAILURE;
         }
 
-        return $exitCode;
+        return Command::SUCCESS;
     }
 }
