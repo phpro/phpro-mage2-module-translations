@@ -2,18 +2,23 @@
 /**
  * @var \Magento\Framework\View\Element\Template $block
  * @var \Phpro\Translations\ViewModel\JsTranslationConfig $viewModel
+ * @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer
  */
 $viewModel = $block->getViewModel();
 $jsTranslationMapPath = $viewModel->getJsTranslationFilePath();
 ?>
 <?php if ($jsTranslationMapPath): ?>
-    <script>
+    <?php
+    $script = <<<script
         require.config({
             'map': {
                 '*': {
-                    'js-translation.json': '<?= $jsTranslationMapPath ?>',
+                    'js-translation.json': '{$jsTranslationMapPath}',
                 }
             }
         });
-    </script>
+        script;
+    ?>
+
+    <?= /* @noEscape */ $secureRenderer->renderTag('script', [], $script, false) ?>
 <?php endif; ?>
