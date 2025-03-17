@@ -50,3 +50,9 @@
 - Proxied classes used in console commands
 ### Removed
 - Removed \Phpro\Translations\Model\Translation\Source\Locales dependency in \Phpro\Translations\Console\Command\PrepareKeysCommand
+
+## [1.6.0] - 2025-03-17
+### Updated
+- Reallow PHP 8.1
+### Bugfix
+- Fix CSP in checkout
