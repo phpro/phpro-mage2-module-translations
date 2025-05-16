@@ -15,8 +15,12 @@ The `Phpro_Translations` module helps you to manage translations via the Magento
 * (Re)generate frontend translations (JSON translation files) via CLI and backend
 
 ## Installation
-```
+```bash
 composer require phpro/mage2-module-translations
+```
+
+```bash
+bin/magento setup:upgrade
 ```
 
 ## End user documentation
@@ -240,4 +244,12 @@ curl -G -k -H "Authorization: Bearer <token>" --data-urlencode "searchCriteria[f
 Install the Hyvä compatibilty module. Minimum version is 1.2.3.
 ```
 composer require hyva-themes/magento2-phpro-translations
+```
+
+## Replace the Magefan Translation Module
+
+Due to changes in policies of the Magefan Translation module, the Magefan translation modules is not free for Magento CE anymore. Switching to this module is as easy as removing the Magefan module and [installing](#installation) this module.
+
+```bash
+composer remove magefan/module-translation magefan/module-comunity
 ```
