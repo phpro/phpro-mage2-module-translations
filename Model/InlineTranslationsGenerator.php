@@ -111,7 +111,7 @@ class InlineTranslationsGenerator
      * @throws \Exception
      * @return InlineGenerateStats
      */
-    private function generate(int $storeId, string $themePath = null): InlineGenerateStats
+    private function generate(int $storeId, ?string $themePath = null): InlineGenerateStats
     {
         $translations = [];
         $area = 'frontend';

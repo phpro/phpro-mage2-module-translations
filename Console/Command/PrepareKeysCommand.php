@@ -37,7 +37,7 @@ class PrepareKeysCommand extends Command
         ResolverFactory $optionResolverFactory,
         Parser $parser,
         TranslationDataManagementInterface $translationDataManagement,
-        string $name = null
+        ?string $name = null
     ) {
         $this->optionResolverFactory = $optionResolverFactory;
         $this->parser = $parser;
