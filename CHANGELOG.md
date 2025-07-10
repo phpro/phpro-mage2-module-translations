@@ -56,3 +56,7 @@
 - Reallow PHP 8.1
 ### Bugfix
 - Fix CSP in checkout
+
+## [1.7.0] - 2025-07-10
+### Added
+- Compatibility with PHP 8.4: Use explicit nullable type
