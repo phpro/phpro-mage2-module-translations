@@ -60,3 +60,7 @@
 ## [1.7.0] - 2025-07-10
 ### Added
 - Compatibility with PHP 8.4: Use explicit nullable type
+
+## [1.8.0] - 2026-07-22
+### Added
+- Compatibility with PHP 8.5
