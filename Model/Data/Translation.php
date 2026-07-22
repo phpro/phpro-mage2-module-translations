@@ -81,7 +81,7 @@ class Translation extends AbstractExtensibleObject implements TranslationInterfa
      */
     public function getFrontend()
     {
-        return (boolean) $this->_get(self::FRONTEND);
+        return (bool) $this->_get(self::FRONTEND);
     }
 
     /**

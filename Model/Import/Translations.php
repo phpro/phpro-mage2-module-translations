@@ -209,7 +209,7 @@ class Translations extends AbstractEntity
     private function insertOnDuplicate(array $entityList): int
     {
         if ($entityList) {
-            $tableName = $this->_connection->getTableName(static::TABLE);
+            $tableName = $this->_connection->getTableName(self::TABLE);
             return (int) $this->_connection->insertOnDuplicate(
                 $tableName,
                 $entityList,
