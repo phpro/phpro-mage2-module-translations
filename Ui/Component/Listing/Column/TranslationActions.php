@@ -48,7 +48,7 @@ class TranslationActions extends Column
                     $item[$this->getData('name')] = [
                         'edit' => [
                             'href' => $this->urlBuilder->getUrl(
-                                static::URL_PATH_EDIT,
+                                self::URL_PATH_EDIT,
                                 [
                                     'key_id' => $item['key_id']
                                 ]
@@ -57,7 +57,7 @@ class TranslationActions extends Column
                         ],
                         'delete' => [
                             'href' => $this->urlBuilder->getUrl(
-                                static::URL_PATH_DELETE,
+                                self::URL_PATH_DELETE,
                                 [
                                     'key_id' => $item['key_id']
                                 ]
