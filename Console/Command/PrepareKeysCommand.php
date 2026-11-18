@@ -45,6 +45,16 @@ class PrepareKeysCommand extends Command
      */
     private $directoryList;
 
+    /**
+     * Initialize the translation key command.
+     *
+     * @param ResolverFactory $optionResolverFactory
+     * @param Parser $parser
+     * @param TranslationDataManagementInterface $translationDataManagement
+     * @param Js $jsAdapter
+     * @param DirectoryList $directoryList
+     * @param string|null $name
+     */
     public function __construct(
         ResolverFactory $optionResolverFactory,
         Parser $parser,

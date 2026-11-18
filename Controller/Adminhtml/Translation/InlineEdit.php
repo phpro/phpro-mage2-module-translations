@@ -25,6 +25,14 @@ class InlineEdit extends Action
      */
     private $resource;
 
+    /**
+     * Initialize the inline translation editor.
+     *
+     * @param Context $context
+     * @param JsonFactory $jsonFactory
+     * @param TranslationFactory $translationFactory
+     * @param ResourceTranslation $resource
+     */
     public function __construct(
         Context $context,
         JsonFactory $jsonFactory,
