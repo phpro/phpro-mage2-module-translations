@@ -47,13 +47,13 @@ class FileManagerTest extends TestCase
 
     public function setUp(): void
     {
-        $this->serializer = $this->createMock(Json::class);
-        $this->directoryList = $this->createMock(DirectoryList::class);
+        $this->serializer = $this->createStub(Json::class);
+        $this->directoryList = $this->createStub(DirectoryList::class);
         $this->directoryList->method('getPath')->willReturn(self::MEDIA_DIR_ABSOLUTE);
-        $this->filesystem = $this->createMock(Filesystem::class);
+        $this->filesystem = $this->createStub(Filesystem::class);
         $this->fileDriver = $this->createMock(File::class);
-        $this->urlGenerator = $this->createMock(UrlInterface::class);
-        $this->date = $this->createMock(TimezoneInterface::class);
+        $this->urlGenerator = $this->createStub(UrlInterface::class);
+        $this->date = $this->createStub(TimezoneInterface::class);
 
         $this->fileManager = new FileManager(
             $this->serializer,
@@ -87,17 +87,24 @@ class FileManagerTest extends TestCase
         $this->serializer
             ->method('serialize')
             ->willReturn('{"keyValue":"transValue"}');
+        $writtenFiles = [];
         $this->fileDriver
+            ->expects(static::exactly(2))
             ->method('filePutContents')
-            ->withConsecutive(
-                [$savePath . '/' . $version . 'translation.json', '{"keyValue":"transValue"}'],
-                [$savePath . '/deployed_version.txt', $version],
-            );
+            ->willReturnCallback(static function ($path, $content) use (&$writtenFiles) {
+                $writtenFiles[] = [$path, $content];
+                return strlen($content);
+            });
 
         $this->fileManager->writeJsTranslationFileContent(
             ['keyValue' => 'transValue'],
             'Theme/default/nl_BE'
         );
+
+        static::assertSame([
+            [$savePath . '/' . $version . 'translation.json', '{"keyValue":"transValue"}'],
+            [$savePath . '/deployed_version.txt', $version],
+        ], $writtenFiles);
     }
 
     public function testWriteJsTranslationFileContentWithBaseDirAndCleanup()
@@ -140,29 +147,41 @@ class FileManagerTest extends TestCase
                 $savePath . '/654321translation.json',
                 $savePath . '/001122translation.json',
             ]);
+        $deletedFiles = [];
         $this->fileDriver
             ->expects(static::exactly(2))
             ->method('deleteFile')
-            ->withConsecutive(
-                [$savePath . '/654321translation.json'],
-                [$savePath . '/001122translation.json']
-            );
+            ->willReturnCallback(static function ($path) use (&$deletedFiles) {
+                $deletedFiles[] = $path;
+                return true;
+            });
         $this->date
             ->method('date')
             ->willReturn($now);
         $this->serializer
             ->method('serialize')
             ->willReturn('{"keyValue":"transValue"}');
+        $writtenFiles = [];
         $this->fileDriver
+            ->expects(static::exactly(2))
             ->method('filePutContents')
-            ->withConsecutive(
-                [$savePath . '/' . $version . 'translation.json', '{"keyValue":"transValue"}'],
-                [$savePath . '/deployed_version.txt', $version],
-            );
+            ->willReturnCallback(static function ($path, $content) use (&$writtenFiles) {
+                $writtenFiles[] = [$path, $content];
+                return strlen($content);
+            });
 
         $this->fileManager->writeJsTranslationFileContent(
             ['keyValue' => 'transValue'],
             'Theme/default/nl_BE'
         );
+
+        static::assertSame([
+            [$savePath . '/' . $version . 'translation.json', '{"keyValue":"transValue"}'],
+            [$savePath . '/deployed_version.txt', $version],
+        ], $writtenFiles);
+        static::assertSame([
+            $savePath . '/654321translation.json',
+            $savePath . '/001122translation.json',
+        ], $deletedFiles);
     }
 }

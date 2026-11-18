@@ -6,7 +6,6 @@ namespace Phpro\Translations\Model;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\File\Csv;
-use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Phpro\Translations\Api\ExportManagementInterface;
 use Phpro\Translations\Model\Data\ExportStats;
 
@@ -35,8 +34,7 @@ class ExportManagement implements ExportManagementInterface
         Csv $csv,
         SearchCriteriaBuilder $searchCriteriaBuilder,
         TranslationRepository $repository,
-        DirectoryList $directoryList,
-        TimezoneInterface $time
+        DirectoryList $directoryList
     ) {
         $this->csv = $csv;
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;

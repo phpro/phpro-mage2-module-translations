@@ -186,7 +186,7 @@ class TranslationRepository implements TranslationRepositoryInterface
             if (!$translation->getId()) {
                 throw new NoSuchEntityException(__('Translation with id "%1" does not exist.', $translationId));
             }
-            $translation->delete();
+            $this->resource->delete($translation);
         } catch (\Exception $exception) {
             throw new CouldNotDeleteException(__(
                 'Could not delete the Translation: %1',
