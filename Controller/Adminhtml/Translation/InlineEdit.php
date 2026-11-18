@@ -7,6 +7,7 @@ use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\Controller\Result\JsonFactory;
 use Phpro\Translations\Model\TranslationFactory;
+use Phpro\Translations\Model\ResourceModel\Translation as ResourceTranslation;
 
 class InlineEdit extends Action
 {
@@ -19,14 +20,29 @@ class InlineEdit extends Action
      */
     private $translationFactory;
 
+    /**
+     * @var ResourceTranslation
+     */
+    private $resource;
+
+    /**
+     * Initialize the inline translation editor.
+     *
+     * @param Context $context
+     * @param JsonFactory $jsonFactory
+     * @param TranslationFactory $translationFactory
+     * @param ResourceTranslation $resource
+     */
     public function __construct(
         Context $context,
         JsonFactory $jsonFactory,
-        TranslationFactory $translationFactory
+        TranslationFactory $translationFactory,
+        ResourceTranslation $resource
     ) {
         parent::__construct($context);
         $this->jsonFactory = $jsonFactory;
         $this->translationFactory = $translationFactory;
+        $this->resource = $resource;
     }
 
     /**
@@ -46,11 +62,12 @@ class InlineEdit extends Action
                 $error = true;
             } else {
                 foreach (array_keys($postItems) as $entityId) {
-                    $model = $this->translationFactory->create()->load($entityId);
+                    $model = $this->translationFactory->create();
+                    $this->resource->load($model, $entityId);
                     try {
                         // phpcs:ignore
                         $model->setData(array_merge($model->getData(), $postItems[$entityId]));
-                        $model->save();
+                        $this->resource->save($model);
                     } catch (\Exception $e) {
                         $messages[] = "[Translation ID: {$entityId}]  {$e->getMessage()}";
                         $error = true;

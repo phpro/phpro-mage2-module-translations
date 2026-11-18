@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Phpro\Translations\Console\Command;
 
+use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\Console\Cli;
 use Magento\Setup\Module\I18n\Dictionary\Options\ResolverFactory;
 use Magento\Setup\Module\I18n\Parser\Adapter\Html;
 use Magento\Setup\Module\I18n\Parser\Adapter\Js;
@@ -33,14 +35,38 @@ class PrepareKeysCommand extends Command
      */
     private $translationDataManagement;
 
+    /**
+     * @var Js
+     */
+    private $jsAdapter;
+
+    /**
+     * @var DirectoryList
+     */
+    private $directoryList;
+
+    /**
+     * Initialize the translation key command.
+     *
+     * @param ResolverFactory $optionResolverFactory
+     * @param Parser $parser
+     * @param TranslationDataManagementInterface $translationDataManagement
+     * @param Js $jsAdapter
+     * @param DirectoryList $directoryList
+     * @param string|null $name
+     */
     public function __construct(
         ResolverFactory $optionResolverFactory,
         Parser $parser,
         TranslationDataManagementInterface $translationDataManagement,
+        Js $jsAdapter,
+        DirectoryList $directoryList,
         ?string $name = null
     ) {
         $this->optionResolverFactory = $optionResolverFactory;
         $this->parser = $parser;
+        $this->jsAdapter = $jsAdapter;
+        $this->directoryList = $directoryList;
 
         parent::__construct($name);
         $this->translationDataManagement = $translationDataManagement;
@@ -62,7 +88,7 @@ class PrepareKeysCommand extends Command
      * @param InputInterface  $input
      * @param OutputInterface $output
      *
-     * @return void
+     * @return int
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
@@ -71,10 +97,10 @@ class PrepareKeysCommand extends Command
             $adapters = [
                 'php' => new Php($phraseCollector),
                 'html' => new Html(),
-                'js' => new Js(),
+                'js' => $this->jsAdapter,
                 'xml' => new Xml(),
             ];
-            $optionResolver = $this->optionResolverFactory->create(BP, false);
+            $optionResolver = $this->optionResolverFactory->create($this->directoryList->getRoot(), false);
             foreach ($adapters as $type => $adapter) {
                 $this->parser->addAdapter($type, $adapter);
             }
@@ -88,9 +114,9 @@ class PrepareKeysCommand extends Command
             $output->writeln('<info>Keys successfully created.</info>');
         } catch (\Exception $e) {
             $output->writeln('<error>' . $e->getMessage() . '</error>');
-            return Command::FAILURE;
+            return Cli::RETURN_FAILURE;
         }
 
-        return Command::SUCCESS;
+        return Cli::RETURN_SUCCESS;
     }
 }

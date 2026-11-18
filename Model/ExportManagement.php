@@ -6,7 +6,6 @@ namespace Phpro\Translations\Model;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\File\Csv;
-use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Phpro\Translations\Api\ExportManagementInterface;
 use Phpro\Translations\Model\Data\ExportStats;
 
@@ -31,12 +30,19 @@ class ExportManagement implements ExportManagementInterface
      */
     private $directoryList;
 
+    /**
+     * Initialize the translation exporter.
+     *
+     * @param Csv $csv
+     * @param SearchCriteriaBuilder $searchCriteriaBuilder
+     * @param TranslationRepository $repository
+     * @param DirectoryList $directoryList
+     */
     public function __construct(
         Csv $csv,
         SearchCriteriaBuilder $searchCriteriaBuilder,
         TranslationRepository $repository,
-        DirectoryList $directoryList,
-        TimezoneInterface $time
+        DirectoryList $directoryList
     ) {
         $this->csv = $csv;
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
@@ -45,6 +51,8 @@ class ExportManagement implements ExportManagementInterface
     }
 
     /**
+     * Export translations for the requested locales.
+     *
      * @param array|null $locales
      * @return ExportStats
      */
@@ -65,6 +73,8 @@ class ExportManagement implements ExportManagementInterface
     }
 
     /**
+     * Format translations as CSV rows.
+     *
      * @param \Magento\Framework\Api\SearchResultsInterface $result
      * @return \Generator
      */
@@ -79,6 +89,8 @@ class ExportManagement implements ExportManagementInterface
     }
 
     /**
+     * Build the export file path for the given suffix.
+     *
      * @param string $suffix
      * @return string
      */
