@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Phpro\Translations\Console\Command;
 
+use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Console\Cli;
 use Magento\Setup\Module\I18n\Dictionary\Options\ResolverFactory;
 use Magento\Setup\Module\I18n\Parser\Adapter\Html;
@@ -39,16 +40,23 @@ class PrepareKeysCommand extends Command
      */
     private $jsAdapter;
 
+    /**
+     * @var DirectoryList
+     */
+    private $directoryList;
+
     public function __construct(
         ResolverFactory $optionResolverFactory,
         Parser $parser,
         TranslationDataManagementInterface $translationDataManagement,
         Js $jsAdapter,
+        DirectoryList $directoryList,
         ?string $name = null
     ) {
         $this->optionResolverFactory = $optionResolverFactory;
         $this->parser = $parser;
         $this->jsAdapter = $jsAdapter;
+        $this->directoryList = $directoryList;
 
         parent::__construct($name);
         $this->translationDataManagement = $translationDataManagement;
@@ -82,7 +90,7 @@ class PrepareKeysCommand extends Command
                 'js' => $this->jsAdapter,
                 'xml' => new Xml(),
             ];
-            $optionResolver = $this->optionResolverFactory->create(BP, false);
+            $optionResolver = $this->optionResolverFactory->create($this->directoryList->getRoot(), false);
             foreach ($adapters as $type => $adapter) {
                 $this->parser->addAdapter($type, $adapter);
             }
